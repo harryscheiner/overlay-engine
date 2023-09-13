@@ -5,10 +5,10 @@ CoordMode, Mouse, Client
 CoordMode, Pixel, Client
 SetKeyDelay, 20, 50
 
-#Include ./app/Class/Overlay.ahk
-#Include ./app/Class/GameUIElement.ahk
-#Include ./app/Class/Key.ahk
-#Include ./app/Class/Region.ahk
+#Include ./app/Common/Overlay.ahk
+#Include ./app/Common/GameUIElement.ahk
+#Include ./app/Common/Key.ahk
+#Include ./app/Common/Region.ahk
 #Include ./app/Games/Game.ahk
 
 #Include ./app/helpers.ahk
