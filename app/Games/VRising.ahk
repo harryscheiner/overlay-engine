@@ -86,7 +86,7 @@ Class VRising extends Game {
     Overlays.HUD.addRegion("HotbarSlot8", {x: 435, y: 671, w: 32, h: 32, keys: [Keys.Slot8], mode: "press"})
     Overlays.HUD.addRegion("HotbarSlot9", {x: 474, y: 671, w: 32, h: 32, keys: [Keys.Slot9], mode: "press"})
 
-    Overlays.HUD.addRegion("SkillPrimaryAttack", {x: 652, y: 669, w: 36, h: 36, keys: [Keys.PrimaryAttack], mode: "toggle", manual: true})
+    Overlays.HUD.addRegion("SkillPrimaryAttack", {x: 652, y: 669, w: 36, h: 36, keys: [Keys.PrimaryAttack], mode: "toggle"})
     Overlays.HUD.addRegion("SkillWeaponAttack1", {x: 691, y: 669, w: 36, h: 36, keys: [Keys.WeaponAttack1], mode: "toggle"})
     Overlays.HUD.addRegion("SkillWeaponAttack2", {x: 730, y: 669, w: 36, h: 36, keys: [Keys.WeaponAttack2], mode: "toggle"})
     Overlays.HUD.addRegion("SkillDodgeSpell",    {x: 779, y: 669, w: 36, h: 36, keys: [Keys.DodgeSpell], mode: "toggle"})
@@ -129,21 +129,12 @@ Class VRising extends Game {
       v.releaseKeys()
   }
   hook_LButtonDown_AfterOverlays() {
-    global
-    If (Overlays.HUD.curState) {
-      ; PrimaryAttack manual control
-      If (!ClickedRegion && !Overlays.HUD.regions.toggle.SkillPrimaryAttack.curState && !Overlays.HUD.regions.toggle.SkillPrimaryAttack.manual) {
-        Overlays.HUD.regions.toggle.SkillPrimaryAttack.manual := true
-        Overlays.HUD.regions.toggle.SkillPrimaryAttack.holdKeys()
-      }
-    }
   }
   hook_LButtonUp_AfterOverlays() {
     global
-    ; PrimaryAttack manual control
-    If (!ClickedRegion && Overlays.HUD.regions.toggle.SkillPrimaryAttack.manual) {
-      Overlays.HUD.regions.toggle.SkillPrimaryAttack.manual := false
-      Overlays.HUD.regions.toggle.SkillPrimaryAttack.releaseKeys()
+    ; PrimaryAttack click fix control
+    If (!ClickedRegion && Overlays.HUD.regions.toggle.SkillPrimaryAttack.curState) {
+      Overlays.HUD.regions.toggle.SkillPrimaryAttack.forceReleaseKeys()
     }
   }
   hook_MidOverlayLoop() {

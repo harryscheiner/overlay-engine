@@ -13,9 +13,6 @@ Class Region {
     this.keys := opts.keys ; Array of Key objects
     this.mode := opts.mode ; `press` | `toggle` | `hold`
 
-    if (opts.hasKey("manual"))
-      this.manual := opts.manual
-
     if (!opts.hasKey("noGuiControl"))
       this.createGuiControl(opts)
   }
@@ -73,20 +70,12 @@ Class Region {
     this.updateKeyStates(this.newState)
   }
   holdKeys() {
-    If (!this.hasKey("manual") || !this.manual) {
-      this.newState := true
-      this.updateKeyStates(this.newState)
-    } else {
-      this.updateKeyStates(true)
-    }
+    this.newState := true
+    this.updateKeyStates(this.newState)
   }
   releaseKeys() {
-    If (!this.hasKey("manual") || !this.manual) {
-      this.newState := false
-      this.updateKeyStates(this.newState)
-    } else {
-      this.updateKeyStates(false)
-    }
+    this.newState := false
+    this.updateKeyStates(this.newState)
   }
   updateKeyStates(state) {
     For k, v in this.keys {
