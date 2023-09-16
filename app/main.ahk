@@ -29,9 +29,11 @@ ClickedRegion := false
 SysGet, sizeframe, 33
 SysGet, cyborder, 8
 Gui, Font, s12
-Gui, Add, Text, x0 w360 +Center, % "Game overlay is now running."
-Gui, Add, Text, x0 w360 +Center, % "Closing this window will close the game overlay."
-Gui, Show, % "x" A_ScreenWidth - 360 - sizeframe - cyborder " y" cyborder " w360", Game Overlay
+Gui, Add, Text, x0 w280 +Center, % "Game overlay is now running."
+Gui, Add, Text, x0 w280 +Center, % "To exit the program, press Ctrl+Esc"
+Gui, Add, Text, x0 w280 +Center, % "or close this window."
+Gui, Add, Button, x110 w60 +Center, % "Close", Close
+Gui, Show, % "x" A_ScreenWidth - 280 - sizeframe - cyborder " y" cyborder " w280", Game Overlay
 
 ; Create empty objects
 Keys := {}
@@ -136,6 +138,11 @@ Return
 
 ; Force close with Ctrl+Esc
 ^Esc::
+  goSub ReleaseAllKeys
+  ExitApp
+Return
+
+ButtonClose:
   goSub ReleaseAllKeys
   ExitApp
 Return

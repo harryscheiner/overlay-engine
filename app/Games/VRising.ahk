@@ -4,6 +4,7 @@ Class VRising extends Game {
     global
     SetTitleMatchMode 3
     GAME_TITLE := "VRising"
+    ; NOTE: All coordinates expect game to be running at 1152x720 resolution
   }
   setKeys() {
     global
