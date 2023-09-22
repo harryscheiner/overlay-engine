@@ -41,6 +41,9 @@ Class VRising extends Game {
     Keys.ZoomOut := new Key("WheelDown")
     ; Inventory
     Keys.Repair := new Key("o")
+    Keys.MoveItem := new Key("RButton")
+    ; Wake Up
+    Keys.Respawn := new Key("Space")
   }
 
   setOverlays() {
@@ -51,14 +54,32 @@ Class VRising extends Game {
     Overlays.HUD := new Overlay({}) ; Hotbar, Skills, Action Wheel, Emote Wheel
     Overlays.Movement := new Overlay({}) ; Move, Camera
     Overlays.Inventory := new Overlay({transparency: 150}) ; Repair
+
+    Overlays.UseItemsInventory := new Overlay({transparency: 150}) ; Use in Inventory
+    Overlays.MoveItemsInventory := new Overlay({transparency: 150}) ; Move from Inventory
+    Overlays.MoveItemsStash := new Overlay({transparency: 150}) ; Move from Stash
+    Overlays.MoveItemsWorkbench := new Overlay({transparency: 150}) ; Move from Workbench
+    Overlays.MoveItemsProcessor := new Overlay({transparency: 150}) ; Move from Processor
+
+    Overlays.SleepWake := new Overlay({transparency: 150}) ; Wake from Sleep
   }
 
   setGameUIElements() {
     global
     ; Game UI Elements
     GameUIElements.HealthBar := new GameUIElement({x: 208, y: 653, w: 2, h: 4, color: 0x007283})
-    GameUIElements.InventoryWindow := new GameUIElement({x: 123, y: 78, w: 2, h: 3, color: 0x940a0e})
-    GameUIElements.CraftingWindow := new GameUIElement({x: 314, y: 78, w: 2, h: 4, color: 0x660507})
+    GameUIElements.InventoryOrCraftingWindow := new GameUIElement({x: 302, y: 44, w: 2, h: 3, color: 0xd70b0e})
+    GameUIElements.InventoryWindow := new GameUIElement({x: 123, y: 78, w: 2, h: 3, color: 0x940a0e, dependency: GameUIElements.InventoryOrCraftingWindow})
+    ; May not need this anymore!
+    ;GameUIElements.CraftingWindow := new GameUIElement({x: 314, y: 78, w: 2, h: 4, color: 0x660507, dependency: GameUIElements.InventoryOrCraftingWindow})
+
+    GameUIElements.InteractableWindow := new GameUIElement({x: 848, y: 44, w: 3, h: 3, color: 0xd50b0e, dependency: GameUIElements.InventoryOrCraftingWindow})
+    GameUIElements.ProcessorArrow := new GameUIElement({x: 846, y: 483, w: 2, h: 2, color: 0x4b6773, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.WorkbenchContainerA := new GameUIElement({x: 853, y: 502, w: 1, h: 3, color: 0x505d63, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashSort := new GameUIElement({x: 856, y: 165, w: 3, h: 1, color: 0x87a7b6, dependency: GameUIElements.InteractableWindow})
+
+    GameUIElements.MapZoomMouse := new GameUIElement({x: 446, y: 690, w: 3, h: 1, color: 0x7b797b, dependency: GameUIElements.HealthBar, dependencyLogic: false})
+    GameUIElements.SleepSpaceP := new GameUIElement({x: 537, y: 638, w: 1, h: 2, color: 0x82c9d9, dependency: GameUIElements.HealthBar, dependencyLogic: false})
   }
 
   setRegions() {
@@ -110,17 +131,69 @@ Class VRising extends Game {
     Overlays.Movement.addRegion("MoveRotateCamera", {color: "0x000000", background: "0x3088F3", x: 536, y: 320, w: 80, h: 80, keys: [Keys.RotateCamera], mode: "hold"})
 
     ; Overlay: Inventory Repair
-    Overlays.Inventory.addRegion("RepairHelmet", {text: "R", x: 205, y:  96, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairChest",  {text: "R", x: 207, y: 143, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairGloves", {text: "R", x: 278, y: 202, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairPants",  {text: "R", x: 207, y: 210, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairBoots",  {text: "R", x: 207, y: 297, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairCloak",  {text: "R", x: 145, y: 111, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairRing",   {text: "R", x: 145, y: 199, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot1",  {text: "R", x: 122, y: 397, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot2",  {text: "R", x: 162, y: 397, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot3",  {text: "R", x: 203, y: 397, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot4",  {text: "R", x: 244, y: 397, w: 16, h: 16, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairHelmet", {text: "R", x: 205, y:  96, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairChest",  {text: "R", x: 207, y: 143, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairGloves", {text: "R", x: 278, y: 202, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairPants",  {text: "R", x: 207, y: 210, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairBoots",  {text: "R", x: 207, y: 297, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairCloak",  {text: "R", x: 145, y: 111, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairRing",   {text: "R", x: 145, y: 199, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairSlot1",  {text: "R", x: 122, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairSlot2",  {text: "R", x: 162, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairSlot3",  {text: "R", x: 203, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Inventory.addRegion("RepairSlot4",  {text: "R", x: 244, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+
+    ; Overlay: Use and Move Inventory Items
+    GridCoordsX := [122,162,203,244,285,326,366,407,448]
+    GridCoordsY := [419,460,501,541]
+    Loop, % GridCoordsY.Count() {
+      row := A_Index
+      Loop, % GridCoordsX.Count() {
+        col := A_Index
+        cell := col + ((row-1) * GridCoordsX.Count())
+        Overlays.UseItemsInventory.addRegion("UseItemsInventorySlot" . cell,  {text: "U", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.MoveItemsInventory.addRegion("MoveItemsInventorySlot" . cell,  {text: "->", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+      }
+    }
+
+    ; Overlay: Move Stash Items
+    GridCoordsX := [710,750,791,832,872,913,954]
+    GridCoordsY := [90,131]
+    Loop, % GridCoordsY.Count() {
+      row := A_Index
+      Loop, % GridCoordsX.Count() {
+        col := A_Index
+        cell := col + ((row-1) * GridCoordsX.Count())
+        Overlays.MoveItemsStash.addRegion("MoveItemsStashSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+      }
+    }
+
+    ; Overlay: Move Workbench Items
+    GridCoordsX := [689,730,771,812,852,893,933,974]
+    GridCoordsY := [540]
+    Loop, % GridCoordsY.Count() {
+      row := A_Index
+      Loop, % GridCoordsX.Count() {
+        col := A_Index
+        cell := col + ((row-1) * GridCoordsX.Count())
+        Overlays.MoveItemsWorkbench.addRegion("MoveItemsWorkbenchSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+      }
+    }
+
+    ; Overlay: Move Processor Items
+    GridCoordsX := [673,715,757,799,863,905,947,989]
+    GridCoordsY := [476,518]
+    Loop, % GridCoordsY.Count() {
+      row := A_Index
+      Loop, % GridCoordsX.Count() {
+        col := A_Index
+        cell := col + ((row-1) * GridCoordsX.Count())
+        Overlays.MoveItemsProcessor.addRegion("MoveItemsProcessorSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+      }
+    }
+
+    ; Wake from Sleep
+    Overlays.SleepWake.addRegion("WakeFromSleep",  {color: "0xFF00FF", background: "0x3088F3", x: 466, y: 622, w: 219, h: 31, keys: [Keys.Respawn], mode: "press"})
   }
 
   ; Hooks
@@ -142,11 +215,19 @@ Class VRising extends Game {
     global
     ; Check state of GameUIElements and set state of Overlays accordingly
     Overlays.General.newState := GameUIElements.HealthBar.curState
-    Overlays.Zoom.newState := !GameUIElements.InventoryWindow.curState && !GameUIElements.CraftingWindow.curState
-    Overlays.HUD.newState := GameUIElements.HealthBar.curState && !GameUIElements.InventoryWindow.curState && !GameUIElements.CraftingWindow.curState
+    Overlays.Zoom.newState := !GameUIElements.InventoryOrCraftingWindow.curState
+    Overlays.HUD.newState := GameUIElements.HealthBar.curState && !GameUIElements.InventoryOrCraftingWindow.curState
     Overlays.Movement.newState := GameUIElements.HealthBar.curState
     Overlays.Inventory.newState := GameUIElements.InventoryWindow.curState
-    
+
+    Overlays.UseItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && !GameUIElements.InteractableWindow.curState
+    Overlays.MoveItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && GameUIElements.InteractableWindow.curState
+    Overlays.MoveItemsStash.newState := GameUIElements.StashSort.curState
+    Overlays.MoveItemsWorkbench.newState := GameUIElements.WorkbenchContainerA.curState
+    Overlays.MoveItemsProcessor.newState := GameUIElements.ProcessorArrow.curState
+
+    Overlays.SleepWake.newState := !GameUIElements.HealthBar.curState && !GameUIElements.MapZoomMouse.curState && GameUIElements.SleepSpaceP.curState
+
     ; KeyReleaseRegions - check state to restore toggled keys
     MouseGetPos, xpos, ypos
     For k, v in KeyReleaseOverlay.regions.none {

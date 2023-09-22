@@ -62,7 +62,12 @@ Class Region {
   pressKeys() {
     For k, v in this.keys {
       key := v.key
-      Send {%key%}
+      Switch (key) {
+        case "RButton":
+          Click, Right
+        default:
+          Send {%key%}
+      }
     }
   }
   toggleKeys() {
