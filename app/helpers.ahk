@@ -14,3 +14,7 @@ logDebug(text) {
   FormatTime, vDate,, yyyy-MM-dd hh-mm-ss tt ;12-hour
   FileAppend, %vDate% - %text%`r`n, debug.log
 }
+
+logDebugToWindow(text, line := 1) {
+  GuiControl,, % "DebugLine" line, % text
+}
