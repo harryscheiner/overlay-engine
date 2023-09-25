@@ -57,9 +57,16 @@ Class VRising extends Game {
 
     Overlays.UseItemsInventory := new Overlay({transparency: 150}) ; Use in Inventory
     Overlays.MoveItemsInventory := new Overlay({transparency: 150}) ; Move from Inventory
-    Overlays.MoveItemsStash := new Overlay({transparency: 150}) ; Move from Stash
+
     Overlays.MoveItemsWorkbench := new Overlay({transparency: 150}) ; Move from Workbench
     Overlays.MoveItemsProcessor := new Overlay({transparency: 150}) ; Move from Processor
+    
+    Overlays.MoveItemsStashRow1 := new Overlay({transparency: 150}) ; Move from Stash Row 1
+    Overlays.MoveItemsStashRow2 := new Overlay({transparency: 150}) ; Move from Stash Row 2
+    Overlays.MoveItemsStashRow3 := new Overlay({transparency: 150}) ; Move from Stash Row 3
+    Overlays.MoveItemsStashRow4 := new Overlay({transparency: 150}) ; Move from Stash Row 4
+    Overlays.MoveItemsStashRow5 := new Overlay({transparency: 150}) ; Move from Stash Row 5
+    Overlays.MoveItemsStashRow6 := new Overlay({transparency: 150}) ; Move from Stash Row 6
 
     Overlays.SleepWake := new Overlay({transparency: 150}) ; Wake from Sleep
   }
@@ -76,7 +83,13 @@ Class VRising extends Game {
     GameUIElements.InteractableWindow := new GameUIElement({x: 848, y: 44, w: 3, h: 3, color: 0xd50b0e, dependency: GameUIElements.InventoryOrCraftingWindow})
     GameUIElements.ProcessorArrow := new GameUIElement({x: 846, y: 483, w: 2, h: 2, color: 0x4b6773, dependency: GameUIElements.InteractableWindow})
     GameUIElements.WorkbenchContainerA := new GameUIElement({x: 853, y: 502, w: 1, h: 3, color: 0x505d63, dependency: GameUIElements.InteractableWindow})
-    GameUIElements.StashSort := new GameUIElement({x: 856, y: 165, w: 3, h: 1, color: 0x87a7b6, dependency: GameUIElements.InteractableWindow})
+    
+    GameUIElements.StashRow1Box := new GameUIElement({x: 709, y: 85, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashRow2Box := new GameUIElement({x: 709, y: 126, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashRow3Box := new GameUIElement({x: 709, y: 167, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashRow4Box := new GameUIElement({x: 709, y: 208, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashRow5Box := new GameUIElement({x: 709, y: 249, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    GameUIElements.StashRow6Box := new GameUIElement({x: 709, y: 289, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
 
     GameUIElements.MapZoomMouse := new GameUIElement({x: 446, y: 690, w: 3, h: 1, color: 0x7b797b, dependency: GameUIElements.HealthBar, dependencyLogic: false})
     GameUIElements.SleepSpaceP := new GameUIElement({x: 537, y: 638, w: 1, h: 2, color: 0x82c9d9, dependency: GameUIElements.HealthBar, dependencyLogic: false})
@@ -158,13 +171,14 @@ Class VRising extends Game {
 
     ; Overlay: Move Stash Items
     GridCoordsX := [710,750,791,832,872,913,954]
-    GridCoordsY := [90,131]
+    GridCoordsY := [90,131,171,212,252,293]
     Loop, % GridCoordsY.Count() {
       row := A_Index
+      id := "MoveItemsStashRow" . row
       Loop, % GridCoordsX.Count() {
         col := A_Index
         cell := col + ((row-1) * GridCoordsX.Count())
-        Overlays.MoveItemsStash.addRegion("MoveItemsStashSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays[id].addRegion(id . "Slot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
       }
     }
 
@@ -222,9 +236,16 @@ Class VRising extends Game {
 
     Overlays.UseItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && !GameUIElements.InteractableWindow.curState
     Overlays.MoveItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && GameUIElements.InteractableWindow.curState
-    Overlays.MoveItemsStash.newState := GameUIElements.StashSort.curState
+
     Overlays.MoveItemsWorkbench.newState := GameUIElements.WorkbenchContainerA.curState
     Overlays.MoveItemsProcessor.newState := GameUIElements.ProcessorArrow.curState
+
+    Overlays.MoveItemsStashRow1.newState := GameUIElements.StashRow1Box.curState
+    Overlays.MoveItemsStashRow2.newState := GameUIElements.StashRow2Box.curState
+    Overlays.MoveItemsStashRow3.newState := GameUIElements.StashRow3Box.curState
+    Overlays.MoveItemsStashRow4.newState := GameUIElements.StashRow4Box.curState
+    Overlays.MoveItemsStashRow5.newState := GameUIElements.StashRow5Box.curState
+    Overlays.MoveItemsStashRow6.newState := GameUIElements.StashRow6Box.curState
 
     Overlays.SleepWake.newState := !GameUIElements.HealthBar.curState && !GameUIElements.MapZoomMouse.curState && GameUIElements.SleepSpaceP.curState
 
