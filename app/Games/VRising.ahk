@@ -53,7 +53,7 @@ Class VRising extends Game {
     Overlays.Zoom := new Overlay({transparency: 150}) ; Zoom In / Zoom Out
     Overlays.HUD := new Overlay({}) ; Hotbar, Skills, Action Wheel, Emote Wheel
     Overlays.Movement := new Overlay({}) ; Move, Camera
-    Overlays.Inventory := new Overlay({transparency: 150}) ; Repair
+    Overlays.Repair := new Overlay({transparency: 150}) ; Repair
 
     Overlays.UseItemsInventory := new Overlay({transparency: 150}) ; Use in Inventory
     Overlays.MoveItemsInventory := new Overlay({transparency: 150}) ; Move from Inventory
@@ -131,17 +131,17 @@ Class VRising extends Game {
     Overlays.Movement.addRegion("MoveRotateCamera", {color: "0x000000", background: "0x3088F3", x: 536, y: 320, w: 80, h: 80, keys: [Keys.RotateCamera], mode: "hold"})
 
     ; Overlay: Inventory Repair
-    Overlays.Inventory.addRegion("RepairHelmet", {text: "R", x: 205, y:  96, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairChest",  {text: "R", x: 207, y: 143, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairGloves", {text: "R", x: 278, y: 202, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairPants",  {text: "R", x: 207, y: 210, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairBoots",  {text: "R", x: 207, y: 297, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairCloak",  {text: "R", x: 145, y: 111, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairRing",   {text: "R", x: 145, y: 199, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot1",  {text: "R", x: 122, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot2",  {text: "R", x: 162, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot3",  {text: "R", x: 203, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
-    Overlays.Inventory.addRegion("RepairSlot4",  {text: "R", x: 244, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairHelmet", {text: "R", x: 205, y:  96, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairChest",  {text: "R", x: 207, y: 143, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairGloves", {text: "R", x: 278, y: 202, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairPants",  {text: "R", x: 207, y: 210, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairBoots",  {text: "R", x: 207, y: 297, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairCloak",  {text: "R", x: 145, y: 111, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairRing",   {text: "R", x: 145, y: 199, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairSlot1",  {text: "R", x: 122, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairSlot2",  {text: "R", x: 162, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairSlot3",  {text: "R", x: 203, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
+    Overlays.Repair.addRegion("RepairSlot4",  {text: "R", x: 244, y: 397, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
 
     ; Overlay: Use and Move Inventory Items
     GridCoordsX := [122,162,203,244,285,326,366,407,448]
@@ -218,7 +218,7 @@ Class VRising extends Game {
     Overlays.Zoom.newState := !GameUIElements.InventoryOrCraftingWindow.curState
     Overlays.HUD.newState := GameUIElements.HealthBar.curState && !GameUIElements.InventoryOrCraftingWindow.curState
     Overlays.Movement.newState := GameUIElements.HealthBar.curState
-    Overlays.Inventory.newState := GameUIElements.InventoryWindow.curState
+    Overlays.Repair.newState := GameUIElements.InventoryWindow.curState
 
     Overlays.UseItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && !GameUIElements.InteractableWindow.curState
     Overlays.MoveItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && GameUIElements.InteractableWindow.curState
