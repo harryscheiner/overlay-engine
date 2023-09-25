@@ -1,4 +1,4 @@
-Class VRising extends Game {
+﻿Class VRising extends Game {
   ; Init functions
   matchGame() {
     global

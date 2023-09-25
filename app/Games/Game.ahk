@@ -1,4 +1,4 @@
-Class Game {
+﻿Class Game {
   __New() {
     this.matchGame()
     this.setKeys()

@@ -1,4 +1,4 @@
-Class Overlay {
+﻿Class Overlay {
   curState := -1
   newState := 0
   regions := {}

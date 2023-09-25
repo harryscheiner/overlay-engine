@@ -1,4 +1,4 @@
-; Get the offset of a particular axis to simulate Coordmode "Client" with GUI
+﻿; Get the offset of a particular axis to simulate Coordmode "Client" with GUI
 getWindowOffset(axis) {
   if (axis = "x") {
     SysGet, xborder, 32

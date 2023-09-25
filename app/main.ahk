@@ -1,17 +1,16 @@
-#NoEnv
+﻿#NoEnv
 #SingleInstance Force
 SetBatchLines -1
 CoordMode, Mouse, Client
 CoordMode, Pixel, Client
 SetKeyDelay, 20, 50
 
+#Include ./app/helpers.ahk
 #Include ./app/Common/Overlay.ahk
 #Include ./app/Common/GameUIElement.ahk
 #Include ./app/Common/Key.ahk
 #Include ./app/Common/Region.ahk
 #Include ./app/Games/Game.ahk
-
-#Include ./app/helpers.ahk
 
 GAME_ACTIVE := 0 ; For use with If statements to ensure game is focused
 
@@ -43,7 +42,7 @@ GameUIElements := {}
 goSub Main
 Return
 
-$LButton::  
+$LButton::
   ClickedRegion := false
   if (GAME_ACTIVE) {
     MouseGetPos, xpos, ypos

@@ -1,4 +1,4 @@
-Class Key {
+﻿Class Key {
   curState := -1
   newState := 0
   __New(key) {

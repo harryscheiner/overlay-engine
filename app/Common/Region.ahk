@@ -1,4 +1,4 @@
-Class Region {
+﻿Class Region {
   curState := -1
   newState := 0
   updateColor := false
