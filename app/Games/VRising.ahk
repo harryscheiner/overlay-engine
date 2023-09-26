@@ -42,6 +42,7 @@
     ; Inventory
     Keys.Repair := new Key("o")
     Keys.MoveItem := new Key("RButton")
+    Keys.SplitItem := new Key("o")
     ; Wake Up
     Keys.Respawn := new Key("Space")
   }
@@ -56,17 +57,28 @@
     Overlays.Repair := new Overlay({transparency: 150}) ; Repair
 
     Overlays.UseItemsInventory := new Overlay({transparency: 150}) ; Use in Inventory
-    Overlays.MoveItemsInventory := new Overlay({transparency: 150}) ; Move from Inventory
+    Overlays.MoveItemsInventory := new Overlay({transparency: 200}) ; Move from Inventory
+    Overlays.SplitItemsInventory := new Overlay({font: "s10", transparency: 255}) ; Split from Inventory
 
-    Overlays.MoveItemsWorkbench := new Overlay({transparency: 150}) ; Move from Workbench
-    Overlays.MoveItemsProcessor := new Overlay({transparency: 150}) ; Move from Processor
+    Overlays.MoveItemsWorkbench := new Overlay({transparency: 255}) ; Move from Workbench
+    Overlays.MoveItemsProcessor := new Overlay({transparency: 255}) ; Move from Processor
+
+    Overlays.SplitItemsWorkbench := new Overlay({font: "s10", transparency: 255}) ; Split from Workbench
+    Overlays.SplitItemsProcessor := new Overlay({font: "s10", transparency: 255}) ; Split from Processor
     
-    Overlays.MoveItemsStashRow1 := new Overlay({transparency: 150}) ; Move from Stash Row 1
-    Overlays.MoveItemsStashRow2 := new Overlay({transparency: 150}) ; Move from Stash Row 2
-    Overlays.MoveItemsStashRow3 := new Overlay({transparency: 150}) ; Move from Stash Row 3
-    Overlays.MoveItemsStashRow4 := new Overlay({transparency: 150}) ; Move from Stash Row 4
-    Overlays.MoveItemsStashRow5 := new Overlay({transparency: 150}) ; Move from Stash Row 5
-    Overlays.MoveItemsStashRow6 := new Overlay({transparency: 150}) ; Move from Stash Row 6
+    Overlays.MoveItemsStashRow1 := new Overlay({transparency: 255}) ; Move from Stash Row 1
+    Overlays.MoveItemsStashRow2 := new Overlay({transparency: 255}) ; Move from Stash Row 2
+    Overlays.MoveItemsStashRow3 := new Overlay({transparency: 255}) ; Move from Stash Row 3
+    Overlays.MoveItemsStashRow4 := new Overlay({transparency: 255}) ; Move from Stash Row 4
+    Overlays.MoveItemsStashRow5 := new Overlay({transparency: 255}) ; Move from Stash Row 5
+    Overlays.MoveItemsStashRow6 := new Overlay({transparency: 255}) ; Move from Stash Row 6
+
+    Overlays.SplitItemsStashRow1 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 1
+    Overlays.SplitItemsStashRow2 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 2
+    Overlays.SplitItemsStashRow3 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 3
+    Overlays.SplitItemsStashRow4 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 4
+    Overlays.SplitItemsStashRow5 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 5
+    Overlays.SplitItemsStashRow6 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 6
 
     Overlays.SleepWake := new Overlay({transparency: 150}) ; Wake from Sleep
   }
@@ -164,8 +176,10 @@
       Loop, % GridCoordsX.Count() {
         col := A_Index
         cell := col + ((row-1) * GridCoordsX.Count())
-        Overlays.UseItemsInventory.addRegion("UseItemsInventorySlot" . cell,  {text: "U", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
-        Overlays.MoveItemsInventory.addRegion("MoveItemsInventorySlot" . cell,  {text: "->", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.UseItemsInventory.addRegion("UseItemsInventorySlot" . cell,  {text: "U", background: "0x660507", x: GridCoordsX[col] + 20, y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.MoveItemsInventory.addRegion("MoveItemsInventorySlot" . cell,  {text: "🡆", background: "transparent", x: GridCoordsX[col] + 20, y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        if (row > 1)
+          Overlays.SplitItemsInventory.addRegion("SplitItemsInventorySlot" . cell,  {text: "½", background: "transparent", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.SplitItem], mode: "press"})
       }
     }
 
@@ -174,11 +188,13 @@
     GridCoordsY := [90,131,171,212,252,293]
     Loop, % GridCoordsY.Count() {
       row := A_Index
-      id := "MoveItemsStashRow" . row
+      moveID := "MoveItemsStashRow" . row
+      splitID := "SplitItemsStashRow" . row
       Loop, % GridCoordsX.Count() {
         col := A_Index
         cell := col + ((row-1) * GridCoordsX.Count())
-        Overlays[id].addRegion(id . "Slot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays[moveID].addRegion(moveID . "Slot" . cell,  {text: "🡄", background: "transparent", x: GridCoordsX[col] + 20, y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays[splitID].addRegion(splitID . "Slot" . cell,  {text: "½", background: "transparent", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.SplitItem], mode: "press"})
       }
     }
 
@@ -190,7 +206,8 @@
       Loop, % GridCoordsX.Count() {
         col := A_Index
         cell := col + ((row-1) * GridCoordsX.Count())
-        Overlays.MoveItemsWorkbench.addRegion("MoveItemsWorkbenchSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.MoveItemsWorkbench.addRegion("MoveItemsWorkbenchSlot" . cell,  {text: "🡄", background: "transparent", x: GridCoordsX[col] + 20, y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.SplitItemsWorkbench.addRegion("SplitItemsWorkbenchSlot" . cell,  {text: "½", background: "transparent", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.SplitItem], mode: "press"})
       }
     }
 
@@ -202,7 +219,8 @@
       Loop, % GridCoordsX.Count() {
         col := A_Index
         cell := col + ((row-1) * GridCoordsX.Count())
-        Overlays.MoveItemsProcessor.addRegion("MoveItemsProcessorSlot" . cell,  {text: "<-", background: "0x660507", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.MoveItemsProcessor.addRegion("MoveItemsProcessorSlot" . cell,  {text: "🡄", background: "transparent", x: GridCoordsX[col] + 20, y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+        Overlays.SplitItemsProcessor.addRegion("SplitItemsProcessorSlot" . cell,  {text: "½", background: "transparent", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.SplitItem], mode: "press"})
       }
     }
 
@@ -236,9 +254,13 @@
 
     Overlays.UseItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && !GameUIElements.InteractableWindow.curState
     Overlays.MoveItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && GameUIElements.InteractableWindow.curState
+    Overlays.SplitItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState
 
     Overlays.MoveItemsWorkbench.newState := GameUIElements.WorkbenchContainerA.curState
     Overlays.MoveItemsProcessor.newState := GameUIElements.ProcessorArrow.curState
+
+    Overlays.SplitItemsWorkbench.newState := GameUIElements.WorkbenchContainerA.curState
+    Overlays.SplitItemsProcessor.newState := GameUIElements.ProcessorArrow.curState
 
     Overlays.MoveItemsStashRow1.newState := GameUIElements.StashRow1Box.curState
     Overlays.MoveItemsStashRow2.newState := GameUIElements.StashRow2Box.curState
@@ -246,6 +268,13 @@
     Overlays.MoveItemsStashRow4.newState := GameUIElements.StashRow4Box.curState
     Overlays.MoveItemsStashRow5.newState := GameUIElements.StashRow5Box.curState
     Overlays.MoveItemsStashRow6.newState := GameUIElements.StashRow6Box.curState
+
+    Overlays.SplitItemsStashRow1.newState := GameUIElements.StashRow1Box.curState
+    Overlays.SplitItemsStashRow2.newState := GameUIElements.StashRow2Box.curState
+    Overlays.SplitItemsStashRow3.newState := GameUIElements.StashRow3Box.curState
+    Overlays.SplitItemsStashRow4.newState := GameUIElements.StashRow4Box.curState
+    Overlays.SplitItemsStashRow5.newState := GameUIElements.StashRow5Box.curState
+    Overlays.SplitItemsStashRow6.newState := GameUIElements.StashRow6Box.curState
 
     Overlays.SleepWake.newState := !GameUIElements.HealthBar.curState && !GameUIElements.MapZoomMouse.curState && GameUIElements.SleepSpaceP.curState
 
