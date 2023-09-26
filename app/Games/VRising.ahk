@@ -262,19 +262,19 @@
     Overlays.SplitItemsWorkbench.newState := GameUIElements.WorkbenchContainerA.curState
     Overlays.SplitItemsProcessor.newState := GameUIElements.ProcessorArrow.curState
 
-    Overlays.MoveItemsStashRow1.newState := GameUIElements.StashRow1Box.curState
-    Overlays.MoveItemsStashRow2.newState := GameUIElements.StashRow2Box.curState
-    Overlays.MoveItemsStashRow3.newState := GameUIElements.StashRow3Box.curState
-    Overlays.MoveItemsStashRow4.newState := GameUIElements.StashRow4Box.curState
-    Overlays.MoveItemsStashRow5.newState := GameUIElements.StashRow5Box.curState
-    Overlays.MoveItemsStashRow6.newState := GameUIElements.StashRow6Box.curState
+    Overlays.MoveItemsStashRow1.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow1Box.curState
+    Overlays.MoveItemsStashRow2.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow2Box.curState
+    Overlays.MoveItemsStashRow3.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow3Box.curState
+    Overlays.MoveItemsStashRow4.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow4Box.curState
+    Overlays.MoveItemsStashRow5.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow5Box.curState
+    Overlays.MoveItemsStashRow6.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow6Box.curState
 
-    Overlays.SplitItemsStashRow1.newState := GameUIElements.StashRow1Box.curState
-    Overlays.SplitItemsStashRow2.newState := GameUIElements.StashRow2Box.curState
-    Overlays.SplitItemsStashRow3.newState := GameUIElements.StashRow3Box.curState
-    Overlays.SplitItemsStashRow4.newState := GameUIElements.StashRow4Box.curState
-    Overlays.SplitItemsStashRow5.newState := GameUIElements.StashRow5Box.curState
-    Overlays.SplitItemsStashRow6.newState := GameUIElements.StashRow6Box.curState
+    Overlays.SplitItemsStashRow1.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow1Box.curState
+    Overlays.SplitItemsStashRow2.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow2Box.curState
+    Overlays.SplitItemsStashRow3.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow3Box.curState
+    Overlays.SplitItemsStashRow4.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow4Box.curState
+    Overlays.SplitItemsStashRow5.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow5Box.curState
+    Overlays.SplitItemsStashRow6.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow6Box.curState
 
     Overlays.SleepWake.newState := !GameUIElements.HealthBar.curState && !GameUIElements.MapZoomMouse.curState && GameUIElements.SleepSpaceP.curState
 
