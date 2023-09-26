@@ -4,12 +4,13 @@
   regions := {}
   __New(opts) {
     opts.transparency := opts.hasKey("transparency") ? opts.transparency : 50
+    opts.font := opts.hasKey("font") ? opts.font : "s8 bold"
 
     ; Gui Setup
     Gui New, +LastFound +E0x20 +AlwaysOnTop +ToolWindow -Caption +Hwndhwnd
-    WinSet, TransColor, % "0xFF00FF " opts.transparency
-    Gui, Color, 0xFF00FF
-    Gui, Font, s8 bold
+    WinSet, TransColor, % "0x000001 " opts.transparency
+    Gui, Color, 0x000001
+    Gui, Font, % opts.font
 
     this.gui := hwnd
   }

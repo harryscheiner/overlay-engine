@@ -28,12 +28,16 @@
     opts.value := opts.hasKey("color") ? 100 : 0
     this.color := opts.hasKey("color") ? opts.color : false
 
+    ; Text color
+    this.textColor := opts.hasKey("textColor") ? opts.textColor : "White"
+
     ; Create GuiControl for rectangle
-    Gui, % this.hwnd ": Add", Progress, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.color " Background" this.background " v" this.id, % opts.value
+    if (this.hasRect := (this.background != "transparent"))
+      Gui, % this.hwnd ": Add", Progress, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.color " Background" this.background " v" this.id, % opts.value
     
     ; Create GuiControl for label
     if (this.hasText := opts.hasKey("text"))
-      Gui, % this.hwnd ": Add", Text, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " CWhite v" this.id "_Text +BackgroundTrans +Center 0x200", % opts.text
+      Gui, % this.hwnd ": Add", Text, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.textColor " v" this.id "_Text +BackgroundTrans +Center 0x200", % opts.text
   }
   
   update() {
@@ -52,7 +56,9 @@
   }
   updateGuiControl() {
     ; Update color based on state
-    GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
+    If (this.hasRect) {
+      GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
+    }
     If (this.hasText) {
       GuiControl, % this.hwnd ": Hide", % this.id "_Text"
       GuiControl, % this.hwnd ": Show", % this.id "_Text"

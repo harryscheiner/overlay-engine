@@ -207,7 +207,7 @@
     }
 
     ; Wake from Sleep
-    Overlays.SleepWake.addRegion("WakeFromSleep",  {color: "0xFF00FF", background: "0x3088F3", x: 466, y: 622, w: 219, h: 31, keys: [Keys.Respawn], mode: "press"})
+    Overlays.SleepWake.addRegion("WakeFromSleep",  {color: "0x000001", background: "0x3088F3", x: 466, y: 622, w: 219, h: 31, keys: [Keys.Respawn], mode: "press"})
   }
 
   ; Hooks
