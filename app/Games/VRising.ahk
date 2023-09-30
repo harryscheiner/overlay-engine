@@ -115,8 +115,8 @@
     KeyReleaseOverlay.addRegion("KeyReleaseSidebar", {noGuiControl: true, background: "0xFFB015", x: 1043, y: 138, w: 110, h: 303, keys: [], mode: "none"})
 
     ; Overlay: General
-    Overlays.General.addRegion("SkillFeed", {x: 611, y: 669, w: 29, h: 36, keys: [Keys.Feed], mode: "toggle"})
-    Overlays.General.addRegion("SkillJump", {text: "JUMP", x: 554, y: 624, w: 44, h: 22, keys: [Keys.Jump], mode: "toggle"})
+    Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x000000", x: 496, y: 450, w: 40, h: 20, keys: [Keys.Feed], mode: "toggle"})
+    Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x000000", x: 616, y: 450, w: 40, h: 20, keys: [Keys.Jump], mode: "toggle"})
 
     ; Overlay: Zoom
     Overlays.Zoom.addRegion("ZoomIn",  {text: "IN",  color: "0x000000", background: "0x3088F3", x: 17, y: 658, w: 34, h: 20, keys: [Keys.ZoomIn], mode: "press"})
@@ -141,8 +141,8 @@
     Overlays.HUD.addRegion("SkillSpell2",        {x: 867, y: 669, w: 36, h: 36, keys: [Keys.Spell2], mode: "toggle"})
     Overlays.HUD.addRegion("SkillUltimate",      {x: 916, y: 669, w: 36, h: 36, keys: [Keys.Ultimate], mode: "toggle"})
 
-    Overlays.HUD.addRegion("WheelAction",      {text: "Action", color: "0x000000", background: "0x3088F3", x: 496, y: 450, w: 40, h: 20, keys: [Keys.ActionWheel], mode: "hold"})
-    Overlays.HUD.addRegion("WheelEmote",       {text: "Emote", color: "0x000000", background: "0x3088F3", x: 616, y: 450, w: 40, h: 20, keys: [Keys.EmoteWheel], mode: "hold"})
+    Overlays.HUD.addRegion("WheelAction",      {text: "Action", color: "0x000000", background: "0x3088F3", x: 496, y: 250, w: 40, h: 20, keys: [Keys.ActionWheel], mode: "hold"})
+    Overlays.HUD.addRegion("WheelEmote",       {text: "Emote", color: "0x000000", background: "0x3088F3", x: 616, y: 250, w: 40, h: 20, keys: [Keys.EmoteWheel], mode: "hold"})
 
     ; Overlay: Movement
     Overlays.Movement.addRegion("MoveUp",           {color: "0x000000", background: "0x3088F3", x: 546, y: 270, w: 60, h: 40, keys: [Keys.RotateCamera, Keys.MoveUp], mode: "hold"})
