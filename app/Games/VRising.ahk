@@ -115,8 +115,8 @@
     KeyReleaseOverlay.addRegion("KeyReleaseSidebar", {noGuiControl: true, background: "0xFFB015", x: 1043, y: 138, w: 110, h: 303, keys: [], mode: "none"})
 
     ; Overlay: General
-    Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x000000", x: 496, y: 450, w: 40, h: 20, keys: [Keys.Feed], mode: "toggle"})
-    Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x000000", x: 616, y: 450, w: 40, h: 20, keys: [Keys.Jump], mode: "toggle"})
+    Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x000000", x: 496, y: 450, w: 40, h: 20, keys: [Keys.Jump], mode: "toggle"})
+    Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x000000", x: 616, y: 450, w: 40, h: 20, keys: [Keys.Feed], mode: "toggle"})
 
     ; Overlay: Zoom
     Overlays.Zoom.addRegion("ZoomIn",  {text: "IN",  color: "0x000000", background: "0x3088F3", x: 17, y: 658, w: 34, h: 20, keys: [Keys.ZoomIn], mode: "press"})
