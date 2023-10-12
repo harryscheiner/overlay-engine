@@ -10,16 +10,21 @@
       this.curState := this.newState
 
     ; Update real keypress state
-    key := this.key
-    If (this.curState && !GetKeyState(key))
-      Send {%key% Down}
-    If (!this.curState && GetKeyState(key))
-      Send {%key% Up}
+    If (this.curState && !GetKeyState(this.key))
+      this.down()
+    If (!this.curState && GetKeyState(this.key))
+      this.up()
   }
-
-  forceRelease() {
+  down() {
     key := this.key
-    If (GetKeyState(key))
-      Send {%key% Up}
+    Send {%key% Down}
+  }
+  up() {
+    key := this.key
+    Send {%key% Up}
+  }
+  forceRelease() {
+    If (GetKeyState(this.key))
+      this.up()
   }
 }

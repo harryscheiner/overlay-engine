@@ -35,6 +35,8 @@
   }
 
   ; Hooks
+  hook_Special(v) {
+  }
   hook_LButtonDown_AfterHold() {
   }
   hook_LButtonDown_AfterPress() {

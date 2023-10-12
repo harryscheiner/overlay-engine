@@ -54,6 +54,8 @@ $LButton::
             If (xpos < v.x || ypos < v.y || xpos > v.x + v.w || ypos > v.y + v.h)
               Continue
             Switch (regionMode) {
+              case "special":
+                v.newState := true
               case "hold":
                 v.holdKeys()
                 GAME.hook_LButtonDown_AfterHold()
@@ -79,9 +81,16 @@ Return
 $LButton Up::
   if (GAME_ACTIVE) {
     For overlayKey, overlay in Overlays {
-      If (overlay.curState && Overlay.regions.hasKey("hold")) {
-        For k, v in Overlay.regions.hold {
-          v.releaseKeys()
+      If (overlay.curState) {
+        If (Overlay.regions.hasKey("hold")) {
+          For k, v in Overlay.regions.hold {
+            v.releaseKeys()
+          }
+        }
+      }
+      If (Overlay.regions.hasKey("special")) {
+        For k, v in Overlay.regions.special {
+          v.newState := false
         }
       }
     }

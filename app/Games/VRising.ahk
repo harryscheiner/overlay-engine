@@ -31,6 +31,7 @@
     Keys.MoveDown := new Key("s")
     Keys.MoveRight := new Key("d")
     Keys.RotateCamera := new Key("v")
+    Keys.AutoWalk := new Key("Up")
     ; Misc
     Keys.Feed := new Key("f")
     Keys.Jump := new Key("z")
@@ -139,21 +140,24 @@
     Overlays.HUD.addRegion("WheelAction",        {text: "Ctrl", color: "0x000000", background: "0x3088F3", x: 519, y: 285, w: 30, h: 16, keys: [Keys.ActionWheel], mode: "hold"})
     ;Overlays.HUD.addRegion("WheelEmote",         {text: "Emote", color: "0x000000", background: "0x3088F3", x: 616, y: 250, w: 40, h: 20, keys: [Keys.EmoteWheel], mode: "hold"})
     Overlays.HUD.addRegion("SkillPrimaryAttack", {text: "Atk",  color: "0x000000",                         x: 603, y: 285, w: 30, h: 16, keys: [Keys.PrimaryAttack], mode: "toggle"})
+    Overlays.HUD.addRegion("RotateCameraLeft",   {text: "↶",   color: "0x000000", background: "0x3088F3", x: 551, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseLeft"})
+    Overlays.HUD.addRegion("RotateCameraRight",  {text: "↷",   color: "0x000000", background: "0x3088F3", x: 577, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseRight"})
+    Overlays.HUD.addRegion("AutoWalk",           {text: "↑↑",   color: "0x000000", background: "0x3088F3", x: 551, y: 277, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
 
     ; Overlay: General
     Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x000000", x: 519, y: 419, w: 30, h: 16, keys: [Keys.Jump], mode: "toggle"})
     Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x000000", x: 603, y: 419, w: 30, h: 16, keys: [Keys.Feed], mode: "toggle"})
 
     ; Overlay: Movement
-    Overlays.Movement.addRegion("MoveUp",           {color: "0x000000", background: "0x3088F3", x: 551, y: 295, w: 50, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpRight",      {color: "0x000000", background: "0x3088F3", x: 603, y: 303, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveRight",        {color: "0x000000", background: "0x3088F3", x: 611, y: 335, w: 30, h: 50, keys: [Keys.RotateCamera, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownRight",    {color: "0x000000", background: "0x3088F3", x: 603, y: 387, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDown",         {color: "0x000000", background: "0x3088F3", x: 551, y: 395, w: 50, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownLeft",     {color: "0x000000", background: "0x3088F3", x: 519, y: 387, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveLeft",         {color: "0x000000", background: "0x3088F3", x: 511, y: 335, w: 30, h: 50, keys: [Keys.RotateCamera, Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpLeft",       {color: "0x000000", background: "0x3088F3", x: 519, y: 303, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveRotateCamera", {color: "0x000000", background: "0x3088F3", x: 561, y: 335, w: 30, h: 50, keys: [Keys.RotateCamera], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 551, y: 295, w: 50, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 603, y: 303, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp, Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 611, y: 335, w: 30, h: 50, keys: [Keys.RotateCamera, Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 603, y: 387, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown, Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 551, y: 395, w: 50, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 519, y: 387, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 511, y: 335, w: 30, h: 50, keys: [Keys.RotateCamera, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 519, y: 303, w: 30, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveRotateCamera", {text: "↔", color: "0x000000", background: "0x3088F3", x: 559, y: 353, w: 34, h: 34, keys: [Keys.RotateCamera], mode: "hold"})
 
     ; Overlay: Inventory Repair
     Overlays.Repair.addRegion("RepairHelmet", {text: "R", x: 205, y:  96, w: 14, h: 14, keys: [Keys.Repair], mode: "press"})
@@ -229,6 +233,24 @@
   }
 
   ; Hooks
+  hook_Special(region) {
+    global
+    if (region.curState) {
+      MouseGetPos, xpos, ypos
+      For k, v in region.keys
+        v.down()
+      Switch (region.specialHook) {
+        case "moveMouseLeft":
+          MouseMove, -75, 0, 0, R
+        case "moveMouseRight":
+          MouseMove, +75, 0, 0, R
+      }
+      Sleep 10
+      For k, v in region.keys
+        v.up()
+      MouseMove, xpos, ypos, 0
+    }
+  }
   hook_LButtonDown_AfterPress() {
     global
     For k, v in Overlays.General.regions.toggle

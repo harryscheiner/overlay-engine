@@ -11,7 +11,8 @@
     this.w := opts.w
     this.h := opts.h
     this.keys := opts.keys ; Array of Key objects
-    this.mode := opts.mode ; `press` | `toggle` | `hold`
+    this.mode := opts.mode ; `press` | `toggle` | `hold` | `special`
+    this.specialHook := opts.hasKey("specialHook") ? opts.specialHook : false
 
     if (!opts.hasKey("noGuiControl"))
       this.createGuiControl(opts)
@@ -49,8 +50,12 @@
       }
       changed := true
     }
-    For k, v in this.keys {
-      v.update()
+    if (this.curState && this.mode = "special") {
+      GAME.hook_Special(this)
+    } else {
+      For k, v in this.keys {
+        v.update()
+      }
     }
     return changed
   }
