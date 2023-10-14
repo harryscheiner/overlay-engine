@@ -28,6 +28,7 @@
     ; Foreground color
     opts.value := opts.hasKey("color") ? 100 : 0
     this.color := opts.hasKey("color") ? opts.color : false
+    this.colorOff := opts.hasKey("colorOff") ? opts.colorOff : opts.color
 
     ; Text color
     this.textColor := opts.hasKey("textColor") ? opts.textColor : "White"
@@ -63,6 +64,8 @@
     ; Update color based on state
     If (this.hasRect) {
       GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
+      this.hasKey("color")
+        GuiControl, % this.hwnd ": +C" (this.curState ? this.color : this.colorOff) , % this.id
     }
     If (this.hasText) {
       GuiControl, % this.hwnd ": Hide", % this.id "_Text"
