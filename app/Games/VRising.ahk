@@ -51,10 +51,11 @@
   setOverlays() {
     global
     ; Overlays
-    Overlays.General := new Overlay({transparency: 100}) ; Jump, Feed
+    Overlays.General := new Overlay({transparency: 120}) ; Jump, Feed
     Overlays.Zoom := new Overlay({transparency: 150}) ; Zoom In / Zoom Out
-    Overlays.HUD := new Overlay({}) ; Hotbar, Skills, Action Wheel, Emote Wheel
-    Overlays.Movement := new Overlay({}) ; Move, Camera
+    Overlays.HUD := new Overlay({}) ; Hotbar, Skills
+    Overlays.HUDCenter := new Overlay({transparency: 120}) ; Primary Skill, Action Wheel, Emote Wheel
+    Overlays.Movement := new Overlay({transparency: 120}) ; Move, Camera
     Overlays.Repair := new Overlay({transparency: 150}) ; Repair
 
     Overlays.UseItemsInventory := new Overlay({transparency: 150}) ; Use in Inventory
@@ -137,16 +138,16 @@
     Overlays.HUD.addRegion("SkillSpell2",        {x: 867, y: 669, w: 36, h: 36, keys: [Keys.Spell2], mode: "toggle"})
     Overlays.HUD.addRegion("SkillUltimate",      {x: 916, y: 669, w: 36, h: 36, keys: [Keys.Ultimate], mode: "toggle"})
 
-    Overlays.HUD.addRegion("WheelAction",        {text: "Ctrl", color: "0x000000", background: "0x3088F3", x: 519, y: 285, w: 30, h: 16, keys: [Keys.ActionWheel], mode: "hold"})
-    ;Overlays.HUD.addRegion("WheelEmote",         {text: "Emote", color: "0x000000", background: "0x3088F3", x: 616, y: 250, w: 40, h: 20, keys: [Keys.EmoteWheel], mode: "hold"})
-    Overlays.HUD.addRegion("SkillPrimaryAttack", {text: "Atk",  color: "0x000000",                         x: 603, y: 285, w: 30, h: 16, keys: [Keys.PrimaryAttack], mode: "toggle"})
-    Overlays.HUD.addRegion("RotateCameraLeft",   {text: "↶",   color: "0x000000", background: "0x3088F3", x: 551, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseLeft"})
-    Overlays.HUD.addRegion("RotateCameraRight",  {text: "↷",   color: "0x000000", background: "0x3088F3", x: 577, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseRight"})
-    Overlays.HUD.addRegion("AutoWalk",           {text: "↑↑",   color: "0x000000", background: "0x3088F3", x: 551, y: 277, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
+    Overlays.HUDCenter.addRegion("WheelAction",        {text: "Ctrl", color: "0x000000", background: "0x3088F3", x: 519, y: 285, w: 30, h: 16, keys: [Keys.ActionWheel], mode: "hold"})
+    ;Overlays.HUDCenter.addRegion("WheelEmote",         {text: "Emote", color: "0x000000", background: "0x3088F3", x: 616, y: 250, w: 40, h: 20, keys: [Keys.EmoteWheel], mode: "hold"})
+    Overlays.HUDCenter.addRegion("SkillPrimaryAttack", {text: "Atk",  color: "0x0e550a", colorOff: "0x550e0a",   x: 603, y: 285, w: 30, h: 16, keys: [Keys.PrimaryAttack], mode: "toggle"})
+    Overlays.HUDCenter.addRegion("RotateCameraLeft",   {text: "↶",   color: "0x000000", background: "0x3088F3", x: 551, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseLeft"})
+    Overlays.HUDCenter.addRegion("RotateCameraRight",  {text: "↷",   color: "0x000000", background: "0x3088F3", x: 577, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseRight"})
+    Overlays.HUDCenter.addRegion("AutoWalk",           {text: "↑↑",   color: "0x000000", background: "0x3088F3", x: 551, y: 277, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
 
     ; Overlay: General
-    Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x000000", x: 519, y: 419, w: 30, h: 16, keys: [Keys.Jump], mode: "toggle"})
-    Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x000000", x: 603, y: 419, w: 30, h: 16, keys: [Keys.Feed], mode: "toggle"})
+    Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 519, y: 419, w: 30, h: 16, keys: [Keys.Jump], mode: "toggle"})
+    Overlays.General.addRegion("SkillFeed", {text: "Feed", color: "0x0e550a", colorOff: "0x550e0a", x: 603, y: 419, w: 30, h: 16, keys: [Keys.Feed], mode: "toggle"})
 
     ; Overlay: Movement
     Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 551, y: 295, w: 50, h: 30, keys: [Keys.RotateCamera, Keys.MoveUp], mode: "hold"})
@@ -261,8 +262,8 @@
   hook_LButtonUp_AfterOverlays() {
     global
     ; PrimaryAttack click fix control
-    If (!ClickedRegion && Overlays.HUD.regions.toggle.SkillPrimaryAttack.curState) {
-      Overlays.HUD.regions.toggle.SkillPrimaryAttack.forceReleaseKeys()
+    If (!ClickedRegion && Overlays.HUDCenter.regions.toggle.SkillPrimaryAttack.curState) {
+      Overlays.HUDCenter.regions.toggle.SkillPrimaryAttack.forceReleaseKeys()
     }
   }
   hook_MidOverlayLoop() {
@@ -271,6 +272,7 @@
     Overlays.General.newState := GameUIElements.HealthBar.curState
     Overlays.Zoom.newState := !GameUIElements.InventoryOrCraftingWindow.curState
     Overlays.HUD.newState := GameUIElements.HealthBar.curState && !GameUIElements.InventoryOrCraftingWindow.curState
+    Overlays.HUDCenter.newState := Overlays.HUD.newState ; Same as HUD
     Overlays.Movement.newState := GameUIElements.HealthBar.curState
     Overlays.Repair.newState := GameUIElements.InventoryWindow.curState
 
