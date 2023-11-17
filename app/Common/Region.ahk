@@ -72,6 +72,12 @@
       GuiControl, % this.hwnd ": Show", % this.id "_Text"
     }
   }
+  hideGuiControl() {
+    If (this.hasRect)
+      GuiControl, % this.hwnd ": Hide", % this.id
+    If (this.hasText)
+      GuiControl, % this.hwnd ": Hide", % this.id "_Text"
+  }
 
   pressKeys() {
     For k, v in this.keys {

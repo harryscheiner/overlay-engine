@@ -32,11 +32,13 @@
     Keys.MoveRight := new Key("d")
     Keys.RotateCamera := new Key("v")
     Keys.AutoWalk := new Key("Up")
+    Keys.Teleport := new Key("Home")
     ; Misc
     Keys.Feed := new Key("f")
     Keys.Jump := new Key("z")
     Keys.ActionWheel := new Key("i")
     Keys.EmoteWheel := new Key("LAlt")
+    Keys.AdminAuth := new Key("End")
     ; Zoom
     Keys.ZoomIn := new Key("WheelUp")
     Keys.ZoomOut := new Key("WheelDown")
@@ -144,6 +146,8 @@
     Overlays.HUDCenter.addRegion("RotateCameraLeft",   {text: "↶",   color: "0x000000", background: "0x3088F3", x: 551, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseLeft"})
     Overlays.HUDCenter.addRegion("RotateCameraRight",  {text: "↷",   color: "0x000000", background: "0x3088F3", x: 577, y: 327, w: 24, h: 24, keys: [Keys.RotateCamera], mode: "special", specialHook: "moveMouseRight"})
     Overlays.HUDCenter.addRegion("AutoWalk",           {text: "↑↑",   color: "0x000000", background: "0x3088F3", x: 551, y: 277, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
+    Overlays.HUDCenter.addRegion("Teleport",           {text: "Teleport",   color: "0x000000", background: "0x3088F3", x: 551, y: 427, w: 50, h: 16, keys: [Keys.Teleport], mode: "press"})
+    Overlays.HUDCenter.addRegion("AdminAuth",          {text: "* Admin *",  color: "0x000000", background: "0x3088F3", x: 551, y: 445, w: 50, h: 16, keys: [Keys.AdminAuth], mode: "special", specialHook: "AdminAuth"})
 
     ; Overlay: General
     Overlays.General.addRegion("SkillJump", {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 519, y: 419, w: 30, h: 16, keys: [Keys.Jump], mode: "toggle"})
@@ -237,19 +241,25 @@
   hook_Special(region) {
     global
     if (region.curState) {
-      MouseGetPos, xpos, ypos
-      For k, v in region.keys
-        v.down()
-      Switch (region.specialHook) {
-        case "moveMouseLeft":
-          MouseMove, -75, 0, 0, R
-        case "moveMouseRight":
-          MouseMove, +75, 0, 0, R
+      if (InStr(region.specialHook, "moveMouse")) {
+        MouseGetPos, xpos, ypos
+        For k, v in region.keys
+          v.down()
+        Switch (region.specialHook) {
+          case "moveMouseLeft":
+            MouseMove, -75, 0, 0, R
+          case "moveMouseRight":
+            MouseMove, +75, 0, 0, R
+        }
+        Sleep 10
+        For k, v in region.keys
+          v.up()
+        MouseMove, xpos, ypos, 0
+      } else if (region.specialHook = "AdminAuth") {
+        region.pressKeys()
+        region.hideGuiControl()
+        Overlays.HUDCenter.removeRegion(region)
       }
-      Sleep 10
-      For k, v in region.keys
-        v.up()
-      MouseMove, xpos, ypos, 0
     }
   }
   hook_LButtonDown_AfterPress() {

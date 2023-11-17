@@ -43,4 +43,7 @@
       this.regions[opts.mode] := {}
     this.regions[opts.mode][id] := new Region(this.gui, id, opts)
   }
+  removeRegion(region) {
+    this.regions[region.mode].Delete(region.id)
+  }
 }
