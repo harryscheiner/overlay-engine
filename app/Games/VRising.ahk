@@ -84,6 +84,26 @@
     Overlays.SplitItemsStashRow5 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 5
     Overlays.SplitItemsStashRow6 := new Overlay({font: "s10", transparency: 255}) ; Split from Stash Row 6
 
+    Overlays.MoveItemsBagAInventorySmall := new Overlay({transparency: 255}) ; Move from Bag A (Small)
+    Overlays.MoveItemsBagAInventoryMedium := new Overlay({transparency: 255}) ; Move from Bag A (Medium)
+    Overlays.MoveItemsBagAInventoryLarge := new Overlay({transparency: 255}) ; Move from Bag A (Large)
+    Overlays.MoveItemsBagAInventoryGrand := new Overlay({transparency: 255}) ; Move from Bag A (Grand)
+
+    Overlays.MoveItemsBagBInventorySmall := new Overlay({transparency: 255}) ; Move from Bag B (Small)
+    Overlays.MoveItemsBagBInventoryMedium := new Overlay({transparency: 255}) ; Move from Bag B (Medium)
+    Overlays.MoveItemsBagBInventoryLarge := new Overlay({transparency: 255}) ; Move from Bag B (Large)
+    Overlays.MoveItemsBagBInventoryGrand := new Overlay({transparency: 255}) ; Move from Bag B (Grand)
+
+    Overlays.MoveItemsBagCInventorySmall := new Overlay({transparency: 255}) ; Move from Bag C (Small)
+    Overlays.MoveItemsBagCInventoryMedium := new Overlay({transparency: 255}) ; Move from Bag C (Medium)
+    Overlays.MoveItemsBagCInventoryLarge := new Overlay({transparency: 255}) ; Move from Bag C (Large)
+    Overlays.MoveItemsBagCInventoryGrand := new Overlay({transparency: 255}) ; Move from Bag C (Grand)
+
+    Overlays.MoveItemsBagDInventorySmall := new Overlay({transparency: 255}) ; Move from Bag D (Small)
+    Overlays.MoveItemsBagDInventoryMedium := new Overlay({transparency: 255}) ; Move from Bag D (Medium)
+    Overlays.MoveItemsBagDInventoryLarge := new Overlay({transparency: 255}) ; Move from Bag D (Large)
+    Overlays.MoveItemsBagDInventoryGrand := new Overlay({transparency: 255}) ; Move from Bag D (Grand)
+
     Overlays.SleepWake := new Overlay({transparency: 150}) ; Wake from Sleep
   }
 
@@ -93,6 +113,7 @@
     GameUIElements.HealthBar := new GameUIElement({x: 208, y: 653, w: 2, h: 4, color: 0x007283})
     GameUIElements.InventoryOrCraftingWindow := new GameUIElement({x: 302, y: 44, w: 2, h: 3, color: 0xd70b0e})
     GameUIElements.InventoryWindow := new GameUIElement({x: 123, y: 78, w: 2, h: 3, color: 0x940a0e, dependency: GameUIElements.InventoryOrCraftingWindow})
+    GameUIElements.BagInventory := new GameUIElement({x: 123, y: 382, w: 2, h: 3, color: 0x010101, dependency: GameUIElements.InventoryWindow})
     ; May not need this anymore!
     ;GameUIElements.CraftingWindow := new GameUIElement({x: 314, y: 78, w: 2, h: 4, color: 0x660507, dependency: GameUIElements.InventoryOrCraftingWindow})
 
@@ -106,6 +127,28 @@
     GameUIElements.StashRow4Box := new GameUIElement({x: 709, y: 208, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
     GameUIElements.StashRow5Box := new GameUIElement({x: 709, y: 249, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
     GameUIElements.StashRow6Box := new GameUIElement({x: 709, y: 289, w: 1, h: 2, color: 0x3b2316, dependency: GameUIElements.InteractableWindow})
+    
+    ; TODO: BagAInventory etc checks are the same as BagInventory checks for now.
+    ;       Should be fixed because it leaves extra arrows when fewer than 4 bags are equipped.
+    GameUIElements.BagAInventory       := new GameUIElement({x: 123, y: 382, w: 2, h: 3, color: 0x010101, dependency: GameUIElements.BagInventory})
+    GameUIElements.BagAInventorySmall  := new GameUIElement({x: 287, y: 285, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagAInventoryMedium})
+    GameUIElements.BagAInventoryMedium := new GameUIElement({x: 206, y: 325, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagAInventoryLarge})
+    GameUIElements.BagAInventoryLarge  := new GameUIElement({x: 287, y: 325, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagAInventory})
+    
+    GameUIElements.BagBInventory       := new GameUIElement({x: 123, y: 382, w: 2, h: 3, color: 0x010101, dependency: GameUIElements.BagInventory})
+    GameUIElements.BagBInventorySmall  := new GameUIElement({x: 470, y: 285, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagBInventoryMedium})
+    GameUIElements.BagBInventoryMedium := new GameUIElement({x: 378, y: 325, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagBInventoryLarge})
+    GameUIElements.BagBInventoryLarge  := new GameUIElement({x: 470, y: 325, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagBInventory})
+    
+    GameUIElements.BagCInventory       := new GameUIElement({x: 123, y: 382, w: 2, h: 3, color: 0x010101, dependency: GameUIElements.BagInventory})
+    GameUIElements.BagCInventorySmall  := new GameUIElement({x: 287, y: 157, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagCInventoryMedium})
+    GameUIElements.BagCInventoryMedium := new GameUIElement({x: 206, y: 198, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagCInventoryLarge})
+    GameUIElements.BagCInventoryLarge  := new GameUIElement({x: 287, y: 198, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagCInventory})
+    
+    GameUIElements.BagDInventory       := new GameUIElement({x: 123, y: 382, w: 2, h: 3, color: 0x010101, dependency: GameUIElements.BagInventory})
+    GameUIElements.BagDInventorySmall  := new GameUIElement({x: 470, y: 157, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagDInventoryMedium})
+    GameUIElements.BagDInventoryMedium := new GameUIElement({x: 378, y: 198, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagDInventoryLarge})
+    GameUIElements.BagDInventoryLarge  := new GameUIElement({x: 470, y: 198, w: 1, h: 1, color: 0x0b0a0d, dependency: GameUIElements.BagDInventory})
 
     GameUIElements.MapZoomMouse := new GameUIElement({x: 446, y: 690, w: 3, h: 1, color: 0x7b797b, dependency: GameUIElements.HealthBar, dependencyLogic: false})
     GameUIElements.SleepSpaceP := new GameUIElement({x: 537, y: 638, w: 1, h: 2, color: 0x82c9d9, dependency: GameUIElements.HealthBar, dependencyLogic: false})
@@ -233,6 +276,34 @@
       }
     }
 
+    ; Overlay: Move Bag Items
+    GridCoordsX := [154,194,235,275,336,378,418,459]
+    GridCoordsY := [274,314,146,187]
+    BagLabelSize := ["Small","Small","Small","Medium","Medium","Large","Large","Grand"]
+    BagLabelPosition := ["A","B","C","D"]
+    halfColCount := Round(GridCoordsX.Count() / 2)
+    halfRowCount := Round(GridCoordsY.Count() / 2)
+    Loop, % GridCoordsY.Count() {
+      row := A_Index
+      Loop, % GridCoordsX.Count() {
+        col := A_Index
+        cell := Mod(col-1, halfColCount) + ((Mod(row-1, halfRowCount)) * halfColCount) + 1
+        
+        ; I hate this but it works
+        if (col <= halfColCount && row <= halfRowCount)
+          position := 1
+        else if (col > halfColCount && row <= halfRowCount)
+          position := 2
+        else if (col <= halfColCount && row > halfRowCount)
+          position := 3
+        else if (col > halfColCount && row > halfRowCount)
+          position := 4
+
+        moveID := "MoveItemsBag" . BagLabelPosition[position] . "Inventory" . BagLabelSize[cell]
+        Overlays[moveID].addRegion(moveID . "Slot" . cell,  {text: "🡇", background: "transparent", x: GridCoordsX[col], y: GridCoordsY[row], w: 14, h: 14, keys: [Keys.MoveItem], mode: "press"})
+      }
+    }
+
     ; Wake from Sleep
     Overlays.SleepWake.addRegion("WakeFromSleep",  {color: "0x000001", background: "0x3088F3", x: 466, y: 622, w: 219, h: 31, keys: [Keys.Respawn], mode: "press"})
   }
@@ -284,7 +355,7 @@
     Overlays.HUD.newState := GameUIElements.HealthBar.curState && !GameUIElements.InventoryOrCraftingWindow.curState
     Overlays.HUDCenter.newState := Overlays.HUD.newState ; Same as HUD
     Overlays.Movement.newState := GameUIElements.HealthBar.curState
-    Overlays.Repair.newState := GameUIElements.InventoryWindow.curState
+    Overlays.Repair.newState := GameUIElements.InventoryWindow.curState && !GameUIElements.BagInventory.curState
 
     Overlays.UseItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && !GameUIElements.InteractableWindow.curState
     Overlays.MoveItemsInventory.newState := GameUIElements.InventoryOrCraftingWindow.curState && GameUIElements.InteractableWindow.curState
@@ -309,6 +380,26 @@
     Overlays.SplitItemsStashRow4.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow4Box.curState
     Overlays.SplitItemsStashRow5.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow5Box.curState
     Overlays.SplitItemsStashRow6.newState := !GameUIElements.WorkbenchContainerA.curState && !GameUIElements.ProcessorArrow.curState && GameUIElements.StashRow6Box.curState
+
+    Overlays.MoveItemsBagAInventorySmall.newState := GameUIElements.BagAInventory.curState
+    Overlays.MoveItemsBagAInventoryMedium.newState := GameUIElements.BagAInventory.curState && !GameUIElements.BagAInventorySmall.curState
+    Overlays.MoveItemsBagAInventoryLarge.newState := GameUIElements.BagAInventory.curState && !GameUIElements.BagAInventoryMedium.curState
+    Overlays.MoveItemsBagAInventoryGrand.newState := GameUIElements.BagAInventory.curState && !GameUIElements.BagAInventoryLarge.curState
+
+    Overlays.MoveItemsBagBInventorySmall.newState := GameUIElements.BagBInventory.curState
+    Overlays.MoveItemsBagBInventoryMedium.newState := GameUIElements.BagBInventory.curState && !GameUIElements.BagBInventorySmall.curState
+    Overlays.MoveItemsBagBInventoryLarge.newState := GameUIElements.BagBInventory.curState && !GameUIElements.BagBInventoryMedium.curState
+    Overlays.MoveItemsBagBInventoryGrand.newState := GameUIElements.BagBInventory.curState && !GameUIElements.BagBInventoryLarge.curState
+    
+    Overlays.MoveItemsBagCInventorySmall.newState := GameUIElements.BagCInventory.curState
+    Overlays.MoveItemsBagCInventoryMedium.newState := GameUIElements.BagCInventory.curState && !GameUIElements.BagCInventorySmall.curState
+    Overlays.MoveItemsBagCInventoryLarge.newState := GameUIElements.BagCInventory.curState && !GameUIElements.BagCInventoryMedium.curState
+    Overlays.MoveItemsBagCInventoryGrand.newState := GameUIElements.BagCInventory.curState && !GameUIElements.BagCInventoryLarge.curState
+    
+    Overlays.MoveItemsBagDInventorySmall.newState := GameUIElements.BagDInventory.curState
+    Overlays.MoveItemsBagDInventoryMedium.newState := GameUIElements.BagDInventory.curState && !GameUIElements.BagDInventorySmall.curState
+    Overlays.MoveItemsBagDInventoryLarge.newState := GameUIElements.BagDInventory.curState && !GameUIElements.BagDInventoryMedium.curState
+    Overlays.MoveItemsBagDInventoryGrand.newState := GameUIElements.BagDInventory.curState && !GameUIElements.BagDInventoryLarge.curState
 
     Overlays.SleepWake.newState := !GameUIElements.HealthBar.curState && !GameUIElements.MapZoomMouse.curState && GameUIElements.SleepSpaceP.curState
 
