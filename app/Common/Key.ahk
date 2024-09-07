@@ -17,11 +17,11 @@
   }
   down() {
     key := this.key
-    Send {%key% Down}
+    Send, {%key% Down}
   }
   up() {
     key := this.key
-    Send {%key% Up}
+    Send, {%key% Up}
   }
   forceRelease() {
     If (GetKeyState(this.key))
