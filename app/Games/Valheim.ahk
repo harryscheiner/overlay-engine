@@ -19,7 +19,7 @@
     Keys.MoveRight := new Key("d")
     Keys.AutoWalk := new Key("q")
     Keys.Jump := new Key("Space")
-    Keys.Teleport := new Key("End")
+    Keys.Teleport := new Key("Home")
     ; Camera
     Keys.CameraUp := new Key("Up")
     Keys.CameraLeft := new Key("Left")
