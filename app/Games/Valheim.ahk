@@ -19,7 +19,11 @@
     Keys.MoveRight := new Key("d")
     Keys.AutoWalk := new Key("q")
     Keys.Jump := new Key("Space")
-    Keys.Teleport := new Key("Home")
+    Keys.TeleportHome := new Key("Home")
+    Keys.TeleportToHarry := new Key("PgUp")
+    Keys.TeleportToKatie := new Key("PgDn")
+    Keys.TeleportToSteve := new Key("End")
+    Keys.TeleportToDavid := new Key("Insert")
     ; Camera
     Keys.CameraUp := new Key("Up")
     Keys.CameraLeft := new Key("Left")
@@ -82,8 +86,8 @@
     Overlays.HUDCenter.addRegion("Block",           {text: "Block", color: "0x000000", background: "0x3088F3", x: 461, y: 277, w: 30, h: 16, keys: [Keys.Block], mode: "hold"})
     Overlays.HUDCenter.addRegion("Inventory",       {text: "Inv",  color: "0x000000", background: "0x3088F3", x: 377, y: 411, w: 30, h: 16, keys: [Keys.Inventory], mode: "press"})
     Overlays.HUDCenter.addRegion("Use",             {text: "Use",  color: "0x000000", background: "0x3088F3", x: 461, y: 411, w: 30, h: 16, keys: [Keys.Use], mode: "press"})
-    Overlays.HUDCenter.addRegion("Power",           {text: "Power",  color: "0x000000", background: "0x3088F3", x: 409, y: 437, w: 50, h: 16, keys: [Keys.Power], mode: "press"})
-    Overlays.HUDCenter.addRegion("Sit",             {text: "Sit",  color: "0x000000", background: "0x3088F3", x: 409, y: 455, w: 50, h: 16, keys: [Keys.Sit], mode: "press"})
+    Overlays.HUDCenter.addRegion("Power",           {text: "Power",  color: "0x000000", background: "0x3088F3", x: 409, y: 419, w: 50, h: 16, keys: [Keys.Power], mode: "press"})
+    ;Overlays.HUDCenter.addRegion("Sit",             {text: "Sit",  color: "0x000000", background: "0x3088F3", x: 409, y: 455, w: 50, h: 16, keys: [Keys.Sit], mode: "press"})
     Overlays.HUDCenter.addRegion("Map",             {text: "Map",  color: "0x000000", background: "0x3088F3", x: 461, y: 429, w: 30, h: 16, keys: [Keys.Map], mode: "press"})
     
     ; Overlay: General
@@ -105,7 +109,11 @@
     Overlays.Movement.addRegion("CameraLeft",       {text: "↶", color: "0x000000", background: "0x3088F3", x: 413, y: 319, w: 20, h: 24, keys: [Keys.CameraLeft], mode: "hold"})
     Overlays.Movement.addRegion("CameraRight",      {text: "↷", color: "0x000000", background: "0x3088F3", x: 435, y: 319, w: 20, h: 24, keys: [Keys.CameraRight], mode: "hold"})
     Overlays.Movement.addRegion("CameraDown",       {text: "↓", color: "0x000000", background: "0x3088F3", x: 457, y: 327, w: 10, h: 16, keys: [Keys.CameraDown], mode: "hold"})
-    Overlays.Movement.addRegion("Teleport",         {text: "Teleport", color: "0x000000", background: "0x3088F3", x: 409, y: 419, w: 50, h: 16, keys: [Keys.Teleport], mode: "press"})
+    Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x000000", background: "0x3088F3", x: 409, y: 437, w: 50, h: 16, keys: [Keys.TeleportHome], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x000000", background: "0x3088F3", x: 391, y: 455, w: 20, h: 16, keys: [Keys.TeleportToHarry], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x000000", background: "0x3088F3", x: 413, y: 455, w: 20, h: 16, keys: [Keys.TeleportToKatie], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToSteve",  {text: "S", color: "0x000000", background: "0x3088F3", x: 435, y: 455, w: 20, h: 16, keys: [Keys.TeleportToSteve], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToDavid",  {text: "D", color: "0x000000", background: "0x3088F3", x: 457, y: 455, w: 20, h: 16, keys: [Keys.TeleportToDavid], mode: "press"})
   }
 
   ; Hooks
