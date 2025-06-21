@@ -44,6 +44,7 @@
   setOverlays() {
     global
     ; Overlays
+    Overlays.Cursor := new Overlay({transparency: 255}) ; Faux Cursor
     Overlays.General := new Overlay({font: "s7", transparency: 100}) ; Craft/Inv
     Overlays.GeneralNoBuild := new Overlay({font: "s7", transparency: 100}) ; Skills/Map/Pause
     Overlays.Movement := new Overlay({transparency: 100}) ; Player Movement
@@ -131,6 +132,8 @@
     Overlays.Map.addRegion("MapZoomIn",       {text: "+", color: "0x000000", background: "0x3088F3", x: 576, y: 367, w: 19, h: 19, keys: [Keys.MWheelUp], mode: "press"})
     Overlays.Map.addRegion("MapZoomOut",      {text: "-", color: "0x000000", background: "0x3088F3", x: 576, y: 388, w: 19, h: 19, keys: [Keys.MWheelDown], mode: "press"})
     Overlays.Map.addRegion("MapDeleteMarker", {text: "🚫", background: "0x660507", x: 533, y: 367, w: 40, h: 40, keys: [Keys.RClick], mode: "press"})
+    
+    Overlays.Cursor.addRegion("FauxCursor", {background: "0xFFFF00", x: 1128, y: 634, w: 1, h: 1, keys: [], mode: "none"})
   }
 
   ; Hooks
@@ -150,6 +153,7 @@
   hook_MidOverlayLoop() {
     global
     ; Check state of GameUIElements and set state of Overlays accordingly
+    Overlays.Cursor.newState := true ; Always visible
     Overlays.General.newState := true ; Always visible
     Overlays.Movement.newState := !GameUIElements.MapBottom2.curState && !GameUIElements.SkillsBottom2.curState && !GameUIElements.PauseTop2.curState
     Overlays.ExtraMovement.newState := Overlays.Movement.newState
@@ -158,6 +162,12 @@
     Overlays.Build.newState := GameUIElements.BuildMenuTop2.curState && !GameUIElements.PauseTop2.curState
     Overlays.GeneralNoBuild.newState := !Overlays.Build.newState
     Overlays.Map.newState := GameUIElements.MapBottom2.curState
+
+    ; Faux cursor since the game cursor can be a little funny sometimes
+    MouseGetPos, xpos, ypos
+    Overlays.Cursor.regions.none.FauxCursor.x := xpos
+    Overlays.Cursor.regions.none.FauxCursor.y := ypos
+    Overlays.Cursor.regions.none.FauxCursor.updateGuiControlPosition()
     
     ; TEST
     ;Overlays.TestInventoryOpen.newState := GameUIElements.InventoryTop2.curState

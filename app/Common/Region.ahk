@@ -72,6 +72,13 @@
       GuiControl, % this.hwnd ": Show", % this.id "_Text"
     }
   }
+  updateGuiControlPosition() {
+    xpos := this.x
+    ypos := this.y
+    width := this.w
+    height := this.height
+    GuiControl, % this.hwnd ": MoveDraw", % this.id, x%xpos% y%ypos%
+  }
   hideGuiControl() {
     If (this.hasRect)
       GuiControl, % this.hwnd ": Hide", % this.id
