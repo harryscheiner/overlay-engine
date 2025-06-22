@@ -104,12 +104,12 @@
     Overlays.Camera.addRegion("CameraDown",         {text: "-", color: "0x000000", background: "0x3088F3", x: 703, y: 318, w: 14, h: 14, keys: [Keys.CameraDown], mode: "hold"})
 
     ; Overlay: Hotbar
-    Overlays.Hotbar.addRegion("HotbarSlot1", {text: "1", color: "0x000000", background: "0x3088F3", x: 637, y: 352, w: 9, h: 13, keys: [Keys.Slot1], mode: "press"})
-    Overlays.Hotbar.addRegion("HotbarSlot2", {text: "2", color: "0x000000", background: "0x3088F3", x: 646, y: 352, w: 9, h: 13, keys: [Keys.Slot2], mode: "press"})
-    Overlays.Hotbar.addRegion("HotbarSlot3", {text: "3", color: "0x000000", background: "0x3088F3", x: 655, y: 352, w: 9, h: 13, keys: [Keys.Slot3], mode: "press"})
-    Overlays.Hotbar.addRegion("HotbarSlot4", {text: "4", color: "0x000000", background: "0x3088F3", x: 664, y: 352, w: 9, h: 13, keys: [Keys.Slot4], mode: "press"})
-    Overlays.Hotbar.addRegion("HotbarSlot5", {text: "5", color: "0x000000", background: "0x3088F3", x: 673, y: 352, w: 9, h: 13, keys: [Keys.Slot5], mode: "press"})
-    Overlays.Hotbar.addRegion("HotbarSlot6", {text: "6", color: "0x000000", background: "0x3088F3", x: 682, y: 352, w: 9, h: 13, keys: [Keys.Slot6], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot1", {text: "1", color: "0x000000", background: "0x3088F3", x: 628, y: 352, w: 12, h: 15, keys: [Keys.Slot1], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot2", {text: "2", color: "0x000000", background: "0x3088F3", x: 640, y: 352, w: 12, h: 15, keys: [Keys.Slot2], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot3", {text: "3", color: "0x000000", background: "0x3088F3", x: 652, y: 352, w: 12, h: 15, keys: [Keys.Slot3], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot4", {text: "4", color: "0x000000", background: "0x3088F3", x: 664, y: 352, w: 12, h: 15, keys: [Keys.Slot4], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot5", {text: "5", color: "0x000000", background: "0x3088F3", x: 676, y: 352, w: 12, h: 15, keys: [Keys.Slot5], mode: "press"})
+    Overlays.Hotbar.addRegion("HotbarSlot6", {text: "6", color: "0x000000", background: "0x3088F3", x: 688, y: 352, w: 12, h: 15, keys: [Keys.Slot6], mode: "press"})
     
     ; Overlay: General
     Overlays.General.addRegion("OpenBuildMenu", {text: "Build", color: "0x000000", background: "0x3088F3", x: 565, y: 409, w: 30, h: 14, keys: [Keys.Build], mode: "press"})
