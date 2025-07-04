@@ -99,10 +99,10 @@
     Overlays.ExtraMovement.addRegion("DodgeDown",   {text: "Dodge", color: "0x000000", background: "0x3088F3", x: 649, y: 317, w: 30, h: 15, keys: [Keys.Dodge, Keys.MoveDown], mode: "hold"})
 
     ; Overlay: Camera
-    Overlays.Camera.addRegion("CameraUp",           {text: "+", color: "0x000000", background: "0x3088F3", x: 703, y: 302, w: 14, h: 14, keys: [Keys.CameraUp], mode: "hold"})
+    Overlays.Camera.addRegion("CameraUp",           {text: "+", color: "0x000000", background: "0x3088F3", x: 699, y: 302, w: 15, h: 15, keys: [Keys.CameraUp], mode: "hold"})
     Overlays.Camera.addRegion("CameraRight",        {text: "↶", color: "0x000000", background: "0x3088F3", x: 649, y: 302, w: 15, h: 15, keys: [Keys.CameraRight], mode: "hold"})
     Overlays.Camera.addRegion("CameraLeft",         {text: "↷", color: "0x000000", background: "0x3088F3", x: 664, y: 302, w: 15, h: 15, keys: [Keys.CameraLeft], mode: "hold"})
-    Overlays.Camera.addRegion("CameraDown",         {text: "-", color: "0x000000", background: "0x3088F3", x: 703, y: 318, w: 14, h: 14, keys: [Keys.CameraDown], mode: "hold"})
+    Overlays.Camera.addRegion("CameraDown",         {text: "-", color: "0x000000", background: "0x3088F3", x: 699, y: 317, w: 15, h: 15, keys: [Keys.CameraDown], mode: "hold"})
 
     ; Overlay: Hotbar
     Overlays.Hotbar.addRegion("HotbarSlot1", {text: "1", color: "0x000000", background: "0x3088F3", x: 628, y: 352, w: 12, h: 15, keys: [Keys.Slot1], mode: "press"})
