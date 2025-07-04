@@ -22,6 +22,9 @@
     Keys.MoveRight := new Key("d")
     Keys.Jump := new Key("Space")
     Keys.Dodge := new Key("LShift")
+    Keys.Ability1 := new Key("e")
+    Keys.Ability2 := new Key("r")
+    Keys.Block := new Key("q")
     ; Build
     Keys.AltKey := new Key("LAlt")
     Keys.MWheelUp := new Key("WheelUp")
@@ -92,6 +95,10 @@
     Overlays.Movement.addRegion("MoveDownLeft",     {text: "◣", color: "0x000000", background: "0x3088F3", x: 633, y: 332, w: 16, h: 16, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
     Overlays.Movement.addRegion("MoveLeft",         {text: "◀", color: "0x000000", background: "0x3088F3", x: 629, y: 302, w: 20, h: 30, keys: [Keys.MoveLeft], mode: "hold"})
     Overlays.Movement.addRegion("MoveUpLeft",       {text: "◤", color: "0x000000", background: "0x3088F3", x: 633, y: 286, w: 16, h: 16, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
+    
+    Overlays.ExtraMovement.addRegion("Ability1",         {text: "E", color: "0x000000", background: "0x3088F3", x: 633, y: 270, w: 16, h: 16, keys: [Keys.Ability1], mode: "hold"})
+    Overlays.ExtraMovement.addRegion("Ability2",         {text: "R", color: "0x000000", background: "0x3088F3", x: 679, y: 270, w: 16, h: 16, keys: [Keys.Ability2], mode: "hold"})
+    Overlays.ExtraMovement.addRegion("Block",            {text: "Q", color: "0x000000", background: "0x3088F3", x: 695, y: 286, w: 16, h: 16, keys: [Keys.Block], mode: "hold"})
 
     ; Overlay: Extra Movement
     Overlays.ExtraMovement.addRegion("LongJump",    {text: "L J", color: "0x000000", background: "0x3088F3", x: 649, y: 252, w: 30, h: 15, keys: [], mode: "special", specialHook: "longJump"})
