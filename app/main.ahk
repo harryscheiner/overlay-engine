@@ -66,7 +66,9 @@ $LButton::
                 v.toggleKeys()
                 GAME.hook_LButtonDown_AfterToggle()
             }
-            ClickedRegion := true
+            if (regionMode != "passthrough") {
+              ClickedRegion := true
+            }
           }
         }
       }
