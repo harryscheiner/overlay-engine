@@ -128,13 +128,15 @@ RenderOverlay:
     }
     GAME_ACTIVE := 1
   } else {
-    For k, v in Overlays {
-      ;v.newState := false
-      overlay := v.gui
-      Gui %overlay%: Hide
+    if (GAME_ACTIVE == 1) {
+      For k, v in Overlays {
+        ;v.newState := false
+        overlay := v.gui
+        Gui %overlay%: Hide
+      }
+      GAME_ACTIVE := 0
+      goSub ReleaseAllKeys
     }
-    GAME_ACTIVE := 0
-    goSub ReleaseAllKeys
   }
 Return
 
