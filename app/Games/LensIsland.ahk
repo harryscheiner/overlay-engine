@@ -94,6 +94,7 @@
     Overlays.Movement.addRegion("MoveUpLeft",       {text: "◤", color: "0x000000", background: "0x3088F3", x: 633, y: 286, w: 16, h: 16, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
 
     ; Overlay: Extra Movement
+    Overlays.ExtraMovement.addRegion("LongJump",    {text: "L J", color: "0x000000", background: "0x3088F3", x: 649, y: 252, w: 30, h: 15, keys: [], mode: "special", specialHook: "longJump"})
     Overlays.ExtraMovement.addRegion("JumpUp",      {text: "Jump", color: "0x000000", background: "0x3088F3", x: 649, y: 267, w: 30, h: 15, keys: [Keys.Jump, Keys.MoveUp], mode: "hold"})
     Overlays.ExtraMovement.addRegion("DodgeDown",   {text: "Dodge", color: "0x000000", background: "0x3088F3", x: 649, y: 317, w: 30, h: 15, keys: [Keys.Dodge, Keys.MoveDown], mode: "hold"})
 
@@ -138,11 +139,19 @@
 
   ; Hooks
   hook_Special(region) {
-    ;global
-    ;if (region.curState) {
-    ;  if (region.specialHook = "Example") {
-    ;  }
-    ;}
+    global
+    if (region.curState) {
+      if (region.specialHook = "longJump") {
+        For k, v in [Keys.MoveUp, Keys.Jump]
+          v.down()
+        Sleep 180
+        Keys.Dodge.down()
+        Sleep 200
+        For k, v in [Keys.MoveUp, Keys.Jump]
+          v.up()
+        Keys.Dodge.up()
+      }
+    }
   }
   hook_LButtonDown_AfterPress() {
   }
