@@ -11,8 +11,14 @@
     this.w := opts.w
     this.h := opts.h
     this.keys := opts.keys ; Array of Key objects
-    this.mode := opts.mode ; `press` | `toggle` | `hold` | `special`
+    this.mode := opts.mode ; `press` | `toggle` | `hold` | `special` | `timer`
     this.specialHook := opts.hasKey("specialHook") ? opts.specialHook : false
+
+    this.time := opts.hasKey("time") ? opts.time : 0
+    Switch (this.mode) {
+      case "timer":
+        this.timerFunc := ObjBindMethod(this, "pressKeys")
+    }
 
     if (!opts.hasKey("noGuiControl"))
       this.createGuiControl(opts)
@@ -46,7 +52,7 @@
     changed := false
     if (this.curState != this.newState) {
       this.curState := this.newState
-      if (this.mode = "toggle") {
+      if (this.mode = "toggle" || this.mode = "timer") {
         this.updateGuiControl()
       }
       changed := true
@@ -102,6 +108,17 @@
   toggleKeys() {
     this.newState := !this.newState
     this.updateKeyStates(this.newState)
+  }
+  timerKeys() {
+    this.newState := !this.newState
+    timer := this.timerFunc
+    If (this.newState) {
+      this.timerFunc()
+      SetTimer, %timer%, % this.time
+    } Else {
+      SetTimer, %timer%, Off
+      this.releaseKeys()
+    }
   }
   holdKeys() {
     this.newState := true

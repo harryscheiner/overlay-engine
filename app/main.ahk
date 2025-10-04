@@ -65,6 +65,9 @@ $LButton::
               case "toggle":
                 v.toggleKeys()
                 GAME.hook_LButtonDown_AfterToggle()
+              case "timer":
+                v.timerKeys()
+                GAME.hook_LButtonDown_AfterTimer()
             }
             if (regionMode != "passthrough") {
               ClickedRegion := true

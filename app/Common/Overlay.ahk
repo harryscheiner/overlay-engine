@@ -23,6 +23,10 @@
       For k, v in this.regions.toggle {
         v.forceReleaseKeys()
       }
+      ; Release all Timer Region keys if Overlay not visible
+      For k, v in this.regions.timer {
+        v.forceReleaseKeys()
+      }
       ; Release all Hold Region keys if Overlay not visible
       For k, v in this.regions.hold {
         v.forceReleaseKeys()

@@ -43,6 +43,8 @@
   }
   hook_LButtonDown_AfterToggle() {
   }
+  hook_LButtonDown_AfterTimer() {
+  }
   hook_LButtonDown_AfterOverlays() {
   }
   hook_LButtonUp_AfterOverlays() {
