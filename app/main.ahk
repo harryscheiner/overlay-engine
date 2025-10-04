@@ -14,9 +14,6 @@ SetKeyDelay, 20, 50
 
 GAME_ACTIVE := 0 ; For use with If statements to ensure game is focused
 
-; Window offset variables
-X_OFFSET := getWindowOffset("x")
-Y_OFFSET := getWindowOffset("y")
 ; Mouse coordinate variables
 xpos := 0
 ypos := 0
@@ -123,11 +120,15 @@ Return
 
 RenderOverlay:
   if (hGame := WinActive(GAME_TITLE)) {
-    WinGetPos x, y, , , % "ahk_id " hGame
+    GAME.getPos(hGame)
+    if (!GAME.initialized) {
+      GAME.init()
+      GAME.initialized := true
+    }
     For k, v in Overlays {
       overlay := v.gui
       if (v.curState)
-        Gui %overlay%: Show, % Format("NoActivate x{} y{}", x + X_OFFSET, y + Y_OFFSET)
+        Gui %overlay%: Show, % Format("NoActivate x{} y{}", GAME.windowX + GAME.offsetX, GAME.windowY + GAME.offsetY)
       else
         Gui %overlay%: Hide
     }

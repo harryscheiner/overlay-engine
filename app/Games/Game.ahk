@@ -1,14 +1,33 @@
 ﻿Class Game {
+  initialized := false
+
   __New() {
     this.matchGame()
+    SetTimer OverlayLoop, 100
+  }
+
+  ; Get window position/dimensions
+  getPos(hGame) {
+    ; Window position variables
+    WinGetPos x, y, w, h, % "ahk_id " hGame
+    this.windowX := x
+    this.windowY := y
+    this.windowW := w
+    this.windowH := h
+
+    ; Window offset variables
+    this.offsetX := getWindowOffset("x")
+    this.offsetY := getWindowOffset("y")
+  }
+
+  ; Init functions
+  init() {
+    this.initialized := true
     this.setKeys()
     this.setOverlays()
     this.setGameUIElements()
     this.setRegions()
-    SetTimer OverlayLoop, 100
   }
-
-  ; Init functions
   matchGame() {
     ; EXAMPLES:
     
