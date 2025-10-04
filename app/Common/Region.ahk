@@ -92,6 +92,8 @@
       Switch (key) {
         case "RButton":
           Click, Right
+        case "MButton":
+          Click, Middle
         default:
           Send {%key%}
       }
