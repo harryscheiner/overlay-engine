@@ -17,7 +17,7 @@
     this.time := opts.hasKey("time") ? opts.time : 0
     Switch (this.mode) {
       case "timer":
-        this.timerFunc := ObjBindMethod(this, "pressKeys")
+        this.timerFunc := ObjBindMethod(this, "timerEvent")
     }
 
     if (!opts.hasKey("noGuiControl"))
@@ -27,14 +27,16 @@
     ; Global scope is required to create GuiControl elements
     global
 
-    ; Background color ON / OFF
+    ; Background color ON / OFF / TIMER (triggered when timer presses the keys)
     this.background := opts.hasKey("background") ? opts.background : "0x1DB015"
     this.backgroundOff := opts.hasKey("backgroundOff") ? opts.backgroundOff : "0xB01D15"
+    this.backgroundTimer := opts.hasKey("backgroundTimer") ? opts.backgroundTimer : "0x3088F3"
 
     ; Foreground color
     opts.value := opts.hasKey("color") ? 100 : 0
     this.color := opts.hasKey("color") ? opts.color : false
     this.colorOff := opts.hasKey("colorOff") ? opts.colorOff : opts.color
+    this.colorTimer := opts.hasKey("colorTimer") ? opts.colorTimer : this.backgroundTimer
 
     ; Text color
     this.textColor := opts.hasKey("textColor") ? opts.textColor : "White"
@@ -66,12 +68,18 @@
     }
     return changed
   }
-  updateGuiControl() {
+  updateGuiControl(flash := false) {
     ; Update color based on state
     If (this.hasRect) {
-      GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
-      this.hasKey("color")
-        GuiControl, % this.hwnd ": +C" (this.curState ? this.color : this.colorOff) , % this.id
+      if (flash) {
+        GuiControl, % this.hwnd ": +Background" (this.curState ? this.backgroundTimer : this.backgroundOff) , % this.id
+        this.hasKey("color")
+          GuiControl, % this.hwnd ": +C" (this.curState ? this.colorTimer : this.colorOff) , % this.id
+      } else {
+        GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
+        this.hasKey("color")
+          GuiControl, % this.hwnd ": +C" (this.curState ? this.color : this.colorOff) , % this.id
+      }
     }
     If (this.hasText) {
       GuiControl, % this.hwnd ": Hide", % this.id "_Text"
@@ -90,6 +98,11 @@
       GuiControl, % this.hwnd ": Hide", % this.id
     If (this.hasText)
       GuiControl, % this.hwnd ": Hide", % this.id "_Text"
+  }
+  timerEvent() {
+    this.updateGuiControl(true)
+    this.pressKeys()
+    this.updateGuiControl(false)
   }
 
   pressKeys() {
