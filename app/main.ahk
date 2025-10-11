@@ -39,7 +39,7 @@ GameUIElements := {}
 goSub Main
 Return
 
-$LButton::
+LButton_Down:
   ClickedRegion := false
   if (GAME_ACTIVE) {
     MouseGetPos, xpos, ypos
@@ -80,7 +80,7 @@ $LButton::
     Click Down
 Return
 
-$LButton Up::
+LButton_Up:
   if (GAME_ACTIVE) {
     For overlayKey, overlay in Overlays {
       If (overlay.curState) {
@@ -132,6 +132,8 @@ RenderOverlay:
       else
         Gui %overlay%: Hide
     }
+    Hotkey, $LButton, LButton_Down, On
+    Hotkey, $LButton Up, LButton_Up, On
     GAME_ACTIVE := 1
   } else {
     if (GAME_ACTIVE == 1) {
@@ -140,6 +142,8 @@ RenderOverlay:
         overlay := v.gui
         Gui %overlay%: Hide
       }
+      Hotkey, $LButton, Off
+      Hotkey, $LButton Up, Off
       GAME_ACTIVE := 0
       goSub ReleaseAllKeys
     }
