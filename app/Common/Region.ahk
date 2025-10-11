@@ -147,6 +147,12 @@
     }
   }
   
+  disableTimers() {
+    this.newState := false
+    timer := this.timerFunc
+    SetTimer, %timer%, Off
+    this.releaseKeys()
+  }
   forceReleaseKeys() {
     For k, v in this.keys {
       v.forceRelease()
