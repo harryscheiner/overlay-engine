@@ -12,7 +12,8 @@ getWindowOffset(axis) {
 
 logDebug(text) {
   FormatTime, vDate,, yyyy-MM-dd hh-mm-ss tt ;12-hour
-  FileAppend, %vDate% - %text%`r`n, debug.log
+  File := FileOpen("debug.log", "a")
+  File.Write(vDate " - " text "`r`n")
 }
 
 logDebugToWindow(text, line := 1) {
