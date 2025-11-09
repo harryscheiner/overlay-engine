@@ -10,6 +10,7 @@
   getPos(hGame) {
     ; Window position variables
     WinGetPos x, y, w, h, % "ahk_id " hGame
+    getClientSize(hGame, w, h)
     this.windowX := x
     this.windowY := y
     this.windowW := w

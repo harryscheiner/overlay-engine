@@ -10,6 +10,13 @@ getWindowOffset(axis) {
   }
 }
 
+getClientSize(hWnd, ByRef w := "", ByRef h := "") {
+  VarSetCapacity(rect, 16)
+  DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
+  w := NumGet(rect, 8, "int")
+  h := NumGet(rect, 12, "int")
+}
+
 logDebug(text) {
   FormatTime, vDate,, yyyy-MM-dd hh-mm-ss tt ;12-hour
   File := FileOpen("debug.log", "a")
