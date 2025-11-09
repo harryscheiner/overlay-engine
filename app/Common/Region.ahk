@@ -14,6 +14,9 @@
     this.mode := opts.mode ; `press` | `toggle` | `hold` | `special` | `timer`
     this.specialHook := opts.hasKey("specialHook") ? opts.specialHook : false
 
+    this.hasText := opts.hasKey("text")
+    this.text := this.hasText ? opts.text : ""
+
     this.time := opts.hasKey("time") ? opts.time : 0
     Switch (this.mode) {
       case "timer":
@@ -33,7 +36,7 @@
     this.backgroundTimer := opts.hasKey("backgroundTimer") ? opts.backgroundTimer : "0x3088F3"
 
     ; Foreground color
-    opts.value := opts.hasKey("color") ? 100 : 0
+    this.value := opts.hasKey("color") ? 100 : 0
     this.color := opts.hasKey("color") ? opts.color : false
     this.colorOff := opts.hasKey("colorOff") ? opts.colorOff : opts.color
     this.colorTimer := opts.hasKey("colorTimer") ? opts.colorTimer : this.backgroundTimer
@@ -43,11 +46,11 @@
 
     ; Create GuiControl for rectangle
     if (this.hasRect := (this.background != "transparent"))
-      Gui, % this.overlay ": Add", Progress, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.color " Background" this.background " v" this.id, % opts.value
+      Gui, % this.overlay ": Add", Progress, % "X" this.x " Y" this.y " W" this.w " H" this.h " C" this.color " Background" this.background " v" this.id, % this.value
     
     ; Create GuiControl for label
     if (this.hasText := opts.hasKey("text"))
-      Gui, % this.overlay ": Add", Text, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.textColor " v" this.id "_Text +BackgroundTrans +Center 0x200", % opts.text
+      Gui, % this.overlay ": Add", Text, % "X" this.x " Y" this.y " W" this.w " H" this.h " C" this.textColor " v" this.id "_Text +BackgroundTrans +Center 0x200", % this.text
   }
   
   update() {
@@ -87,11 +90,7 @@
     }
   }
   updateGuiControlPosition() {
-    xpos := this.x
-    ypos := this.y
-    width := this.w
-    height := this.height
-    GuiControl, % this.overlay ": MoveDraw", % this.id, x%xpos% y%ypos%
+    GuiControl, % this.overlay ": MoveDraw", % this.id, % "+X" this.x " +Y" this.y
   }
   hideGuiControl() {
     If (this.hasRect)
