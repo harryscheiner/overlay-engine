@@ -26,7 +26,6 @@
       ; Release all Timer Region keys if Overlay not visible
       For k, v in this.regions.timer {
         v.disableTimers()
-        v.forceReleaseKeys()
       }
       ; Release all Hold Region keys if Overlay not visible
       For k, v in this.regions.hold {
