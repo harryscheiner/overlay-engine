@@ -156,6 +156,22 @@ ReleaseAllKeys:
   }
 Return
 
+; Hook into Gui Resize trigger
+GuiSize:
+  If A_EventInfo = 1 ; Minimized
+    Return
+
+  ; Otherwise, the window was resized, maximized, or restored
+  GAME.setRegionPositions() ; TODO: This runs once for each active Overlay, but it only needs to run once for each resize
+  For k, v in Overlays {
+    overlay := v.gui
+    if (A_Gui == overlay) {
+      v.updateRegionPositions()
+      break
+    }
+  }
+Return
+
 ; Force close with Ctrl+Esc
 ^Esc::
   goSub ReleaseAllKeys

@@ -50,4 +50,13 @@
   removeRegion(region) {
     this.regions[region.mode].Delete(region.id)
   }
+
+  ; Update the position all Regions inside this Overlay and redraw them
+  updateRegionPositions() {
+    For regionMode, regions in this.regions {
+      For k, v in regions {
+        v.updateGuiControlPosition()
+      }
+    }
+  }
 }
