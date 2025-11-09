@@ -128,7 +128,7 @@ RenderOverlay:
     For k, v in Overlays {
       overlay := v.gui
       if (v.curState)
-        Gui %overlay%: Show, % Format("NoActivate x{} y{}", GAME.windowX + GAME.offsetX, GAME.windowY + GAME.offsetY)
+        Gui %overlay%: Show, % Format("NoActivate x{} y{} w{} h{}", GAME.windowX + GAME.offsetX, GAME.windowY + GAME.offsetY, GAME.windowW, GAME.windowH)
       else
         Gui %overlay%: Hide
     }
