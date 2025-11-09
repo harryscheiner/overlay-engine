@@ -2,8 +2,8 @@
   curState := -1
   newState := 0
   updateColor := false
-  __New(hwnd, id, opts) {
-    this.hwnd := hwnd
+  __New(overlay, id, opts) {
+    this.overlay := overlay
     this.id := id
 
     this.x := opts.x
@@ -43,11 +43,11 @@
 
     ; Create GuiControl for rectangle
     if (this.hasRect := (this.background != "transparent"))
-      Gui, % this.hwnd ": Add", Progress, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.color " Background" this.background " v" this.id, % opts.value
+      Gui, % this.overlay ": Add", Progress, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.color " Background" this.background " v" this.id, % opts.value
     
     ; Create GuiControl for label
     if (this.hasText := opts.hasKey("text"))
-      Gui, % this.hwnd ": Add", Text, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.textColor " v" this.id "_Text +BackgroundTrans +Center 0x200", % opts.text
+      Gui, % this.overlay ": Add", Text, % "X" opts.x " Y" opts.y " W" opts.w " H" opts.h " C" this.textColor " v" this.id "_Text +BackgroundTrans +Center 0x200", % opts.text
   }
   
   update() {
@@ -72,18 +72,18 @@
     ; Update color based on state
     If (this.hasRect) {
       if (flash) {
-        GuiControl, % this.hwnd ": +Background" (this.curState ? this.backgroundTimer : this.backgroundOff) , % this.id
+        GuiControl, % this.overlay ": +Background" (this.curState ? this.backgroundTimer : this.backgroundOff) , % this.id
         this.hasKey("color")
-          GuiControl, % this.hwnd ": +C" (this.curState ? this.colorTimer : this.colorOff) , % this.id
+          GuiControl, % this.overlay ": +C" (this.curState ? this.colorTimer : this.colorOff) , % this.id
       } else {
-        GuiControl, % this.hwnd ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
+        GuiControl, % this.overlay ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
         this.hasKey("color")
-          GuiControl, % this.hwnd ": +C" (this.curState ? this.color : this.colorOff) , % this.id
+          GuiControl, % this.overlay ": +C" (this.curState ? this.color : this.colorOff) , % this.id
       }
     }
     If (this.hasText) {
-      GuiControl, % this.hwnd ": Hide", % this.id "_Text"
-      GuiControl, % this.hwnd ": Show", % this.id "_Text"
+      GuiControl, % this.overlay ": Hide", % this.id "_Text"
+      GuiControl, % this.overlay ": Show", % this.id "_Text"
     }
   }
   updateGuiControlPosition() {
@@ -91,13 +91,13 @@
     ypos := this.y
     width := this.w
     height := this.height
-    GuiControl, % this.hwnd ": MoveDraw", % this.id, x%xpos% y%ypos%
+    GuiControl, % this.overlay ": MoveDraw", % this.id, x%xpos% y%ypos%
   }
   hideGuiControl() {
     If (this.hasRect)
-      GuiControl, % this.hwnd ": Hide", % this.id
+      GuiControl, % this.overlay ": Hide", % this.id
     If (this.hasText)
-      GuiControl, % this.hwnd ": Hide", % this.id "_Text"
+      GuiControl, % this.overlay ": Hide", % this.id "_Text"
   }
   timerEvent() {
     this.updateGuiControl(true)
