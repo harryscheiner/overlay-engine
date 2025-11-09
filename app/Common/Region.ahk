@@ -6,10 +6,10 @@
     this.overlay := overlay
     this.id := id
 
-    this.x := opts.x
-    this.y := opts.y
-    this.w := opts.w
-    this.h := opts.h
+    this.x := opts.hasKey("x") ? opts.x : 0
+    this.y := opts.hasKey("y") ? opts.y : 0
+    this.w := opts.hasKey("w") ? opts.w : 0
+    this.h := opts.hasKey("h") ? opts.h : 0
     this.keys := opts.keys ; Array of Key objects
     this.mode := opts.mode ; `press` | `toggle` | `hold` | `special` | `timer`
     this.specialHook := opts.hasKey("specialHook") ? opts.specialHook : false
@@ -25,6 +25,12 @@
 
     if (!opts.hasKey("noGuiControl"))
       this.createGuiControl(opts)
+  }
+  updateOpts(opts) {
+    this.x := opts.hasKey("x") ? opts.x : this.x
+    this.y := opts.hasKey("y") ? opts.y : this.y
+    this.w := opts.hasKey("w") ? opts.w : this.w
+    this.h := opts.hasKey("h") ? opts.h : this.h
   }
   createGuiControl(opts) {
     ; Global scope is required to create GuiControl elements
@@ -45,8 +51,10 @@
     this.textColor := opts.hasKey("textColor") ? opts.textColor : "White"
 
     ; Create GuiControl for rectangle
-    if (this.hasRect := (this.background != "transparent"))
-      Gui, % this.overlay ": Add", Progress, % "X" this.x " Y" this.y " W" this.w " H" this.h " C" this.color " Background" this.background " v" this.id, % this.value
+    if (this.hasRect := (this.background != "transparent")) {
+      Gui, % this.overlay ": Add", Progress, % "X" this.x " Y" this.y " W" this.w " H" this.h " C" this.color " Background" this.background " v" this.id " hwndrectHwnd", % this.value
+      this.rectHwnd := rectHwnd
+    }
     
     ; Create GuiControl for label
     if (this.hasText := opts.hasKey("text"))
@@ -90,7 +98,12 @@
     }
   }
   updateGuiControlPosition() {
-    GuiControl, % this.overlay ": MoveDraw", % this.id, % "+X" this.x " +Y" this.y
+    If (this.hasRect) {
+      GuiControl, % this.overlay ": MoveDraw", % this.id, % "+X" this.x " +Y" this.y " +W" this.w " +H" this.h
+      WinSet, ExStyle, -0x00020000, % "ahk_id " this.rectHwnd ; For removing borders on Progress elements after resize
+    }
+    If (this.hasText)
+      GuiControl, % this.overlay ": MoveDraw", % this.id "_Text", % "+X" this.x " +Y" this.y " +W" this.w " +H" this.h
   }
   hideGuiControl() {
     If (this.hasRect)
