@@ -141,6 +141,7 @@ RenderOverlay:
         ;v.newState := false
         overlay := v.gui
         Gui %overlay%: Hide
+        v.releaseKeys()
       }
       Hotkey, $LButton, Off
       Hotkey, $LButton Up, Off

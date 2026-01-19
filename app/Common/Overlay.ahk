@@ -19,18 +19,8 @@
     if (this.curState != this.newState) {
       this.curState := this.newState
 
-      ; Release all Toggle Region keys if Overlay not visible
-      For k, v in this.regions.toggle {
-        v.forceReleaseKeys()
-      }
-      ; Release all Timer Region keys if Overlay not visible
-      For k, v in this.regions.timer {
-        v.disableTimers()
-      }
-      ; Release all Hold Region keys if Overlay not visible
-      For k, v in this.regions.hold {
-        v.forceReleaseKeys()
-      }
+      ; Release all keys and disable all timers if Overlay not visible
+      this.releaseKeys()
     }
     
     If (this.curState) {
@@ -39,6 +29,20 @@
           v.update()
         }
       }
+    }
+  }
+  releaseKeys() {
+    ; Release all Toggle Region keys
+    For k, v in this.regions.toggle {
+      v.forceReleaseKeys()
+    }
+    ; Release all Timer Region keys
+    For k, v in this.regions.timer {
+      v.disableTimers()
+    }
+    ; Release all Hold Region keys
+    For k, v in this.regions.hold {
+      v.forceReleaseKeys()
     }
   }
   addRegion(id, opts) {
