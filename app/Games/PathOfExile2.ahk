@@ -21,6 +21,7 @@
     Keys.Skill5 := new Key("e")
     Keys.Skill6 := new Key("r")
     Keys.Skill7 := new Key("t")
+    Keys.DirectMinions := new Key("y")
     ; Screens
     Keys.PauseMenu := new Key("Esc")
     Keys.Map := new Key("Tab")
@@ -51,6 +52,7 @@
   setRegions() {
     global
     ; Overlay: General
+    Overlays.Skills.addRegion("DirectMinionsToggle",  {text: "Direct Minions", color: "0x0e550a", colorOff: "0x550e0a", keys: [Keys.DirectMinions], mode: "timer", time: 2000})
     Overlays.Skills.addRegion("DodgeToggle",  {text: "Dodge", color: "0x0e550a", colorOff: "0x550e0a", keys: [Keys.Dodge], mode: "timer", time: 1100})
     Overlays.Skills.addRegion("FlaskToggle",  {text: "Flasks", color: "0x0e550a", colorOff: "0x550e0a", keys: [Keys.HealthFlask, Keys.ManaFlask], mode: "timer", time: 500})
     Overlays.Skills.addRegion("Skill3Toggle",  {text: "Q", color: "0x0e550a", colorOff: "0x550e0a", keys: [Keys.Skill3], mode: "timer", time: 2000})
@@ -102,6 +104,7 @@
     POS_menuButtonsY := POS_manaUiY + (0.5*rem)
 
     ; Set the region positions
+    Overlays.Skills.regions.timer.DirectMinionsToggle.updateOpts({x: POS_skillsX, y: POS_skillsY - (1*rem) - 1, w: Floor(5*rem) + 4, h: (1*rem)})
     Overlays.Skills.regions.timer.DodgeToggle.updateOpts({x: POS_skillsX, y: POS_skillsY, w: Floor(2.5*rem) + 1, h: (1.5*rem)})
     Overlays.Skills.regions.timer.FlaskToggle.updateOpts({x: POS_skillsX + Floor(2.5*rem) + 2, y: POS_skillsY, w: Floor(2.5*rem) + 2, h: (1.5*rem)})
     
