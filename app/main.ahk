@@ -145,7 +145,6 @@ RenderOverlay:
   } else {
     if (GAME_ACTIVE == 1) {
       For k, v in Overlays {
-        ;v.newState := false
         ov := v.gui
         Gui %ov%: Hide
         v.releaseKeys()

@@ -103,7 +103,7 @@
     Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 369, y: 327, w: 30, h: 50, keys: [Keys.MoveLeft], mode: "hold"})
     Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 377, y: 295, w: 30, h: 30, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
 
-    Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x000000", background: "0x3088F3", x: 409, y: 251, w: 50, h: 16, keys: [Keys.Jump, Keys.AutoWalk], mode: "press"}) ; "special", specialHook: "JumpAutoWalk"})
+    Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x000000", background: "0x3088F3", x: 409, y: 251, w: 50, h: 16, keys: [Keys.Jump, Keys.AutoWalk], mode: "press"})
     Overlays.Movement.addRegion("AutoWalk",         {text: "↑↑", color: "0x000000", background: "0x3088F3", x: 409, y: 269, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
     Overlays.Movement.addRegion("CameraUp",         {text: "↑", color: "0x000000", background: "0x3088F3", x: 401, y: 327, w: 10, h: 16, keys: [Keys.CameraUp], mode: "hold"})
     Overlays.Movement.addRegion("CameraLeft",       {text: "↶", color: "0x000000", background: "0x3088F3", x: 413, y: 319, w: 20, h: 24, keys: [Keys.CameraLeft], mode: "hold"})
@@ -124,14 +124,6 @@
     Overlays.Movement.newState := !GameUIElements.PauseMenuOrangeD.curState && !GameUIElements.LogOffButtonNo.curState && !GameUIElements.MapIconDot.curState
     Overlays.HUDCenter.newState := Overlays.Movement.newState ; Same as Movement
     Overlays.General.newState := true ; Always visible
-
-    ; KeyReleaseRegions - check state to restore toggled keys
-    ;MouseGetPos, xpos, ypos
-    ;For k, v in KeyReleaseOverlay.regions.none {
-    ;  v.newState := (xpos < v.x || ypos < v.y || xpos > v.x + v.w || ypos > v.y + v.h)
-    ;  if (v.update())
-    ;    goSub ReleaseAllKeys
-    ;}
   }
 }
 GAME := new Valheim()

@@ -56,11 +56,6 @@
     Overlays.Hotbar := new Overlay({font: "s7", transparency: 100}) ; Tool selection
     Overlays.Build := new Overlay({transparency: 100}) ; Build menu
     Overlays.Map := new Overlay({transparency: 100}) ; Map menu
-    
-    ;Overlays.TestInventoryOpen := new Overlay({transparency: 120})
-    ;Overlays.TestBuildMenuOpen := new Overlay({transparency: 120})
-    ;Overlays.TestSkillsOpen := new Overlay({transparency: 120})
-    ;Overlays.TestMapOpen := new Overlay({transparency: 120})
   }
 
   setGameUIElements() {
@@ -80,12 +75,6 @@
 
   setRegions() {
     global
-    ; TEST
-    ;Overlays.TestInventoryOpen.addRegion("TestInventoryOpen", {text: "INV", color: "0x000000", background: "0x3088F3", x: 1020, y: 500, w: 100, h: 20, keys: [], mode: "none"})
-    ;Overlays.TestBuildMenuOpen.addRegion("TestBuildMenuOpen", {text: "BUILD", color: "0x000000", background: "0x3088F3", x: 1020, y: 525, w: 100, h: 20, keys: [], mode: "none"})
-    ;Overlays.TestSkillsOpen.addRegion("TestSkillsOpen",       {text: "SKILLS", color: "0x000000", background: "0x3088F3", x: 1020, y: 550, w: 100, h: 20, keys: [], mode: "none"})
-    ;Overlays.TestMapOpen.addRegion("TestMapOpen",             {text: "MAP", color: "0x000000", background: "0x3088F3", x: 1020, y: 575, w: 100, h: 20, keys: [], mode: "none"})
-
     ; Overlay: Movement
     Overlays.Movement.addRegion("MoveUp",           {text: "▲", color: "0x000000", background: "0x3088F3", x: 649, y: 282, w: 30, h: 20, keys: [Keys.MoveUp], mode: "hold"})
     Overlays.Movement.addRegion("MoveUpRight",      {text: "◥", color: "0x000000", background: "0x3088F3", x: 679, y: 286, w: 16, h: 16, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hold"})
@@ -178,12 +167,6 @@
     Overlays.Cursor.regions.passthrough.FauxCursor.x := xpos - 1
     Overlays.Cursor.regions.passthrough.FauxCursor.y := ypos - 1
     Overlays.Cursor.regions.passthrough.FauxCursor.updateGuiControlPosition()
-    
-    ; TEST
-    ;Overlays.TestInventoryOpen.newState := GameUIElements.InventoryTop2.curState
-    ;Overlays.TestBuildMenuOpen.newState := GameUIElements.BuildMenuTop2.curState
-    ;Overlays.TestSkillsOpen.newState := GameUIElements.SkillsBottom2.curState
-    ;Overlays.TestMapOpen.newState := GameUIElements.MapBottom2.curState
   }
 }
 GAME := new LensIsland()
