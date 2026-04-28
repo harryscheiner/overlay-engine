@@ -123,7 +123,6 @@ RenderOverlay:
     GAME.getPos(hGame)
     if (!GAME.initialized) {
       GAME.init()
-      GAME.initialized := true
     }
     For k, v in Overlays {
       overlay := v.gui

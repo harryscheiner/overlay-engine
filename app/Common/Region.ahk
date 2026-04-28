@@ -84,11 +84,11 @@
     If (this.hasRect) {
       if (flash) {
         GuiControl, % this.overlay ": +Background" (this.curState ? this.backgroundTimer : this.backgroundOff) , % this.id
-        this.hasKey("color")
+        if (this.hasKey("color"))
           GuiControl, % this.overlay ": +C" (this.curState ? this.colorTimer : this.colorOff) , % this.id
       } else {
         GuiControl, % this.overlay ": +Background" (this.curState ? this.background : this.backgroundOff) , % this.id
-        this.hasKey("color")
+        if (this.hasKey("color"))
           GuiControl, % this.overlay ": +C" (this.curState ? this.color : this.colorOff) , % this.id
       }
     }
