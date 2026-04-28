@@ -44,9 +44,9 @@ LButton_Down:
   if (GAME_ACTIVE) {
     MouseGetPos, xpos, ypos
 
-    For overlayKey, overlay in Overlays {
-      If (overlay.curState) {
-        For regionMode, regions in Overlay.regions {
+    For overlayKey, ov in Overlays {
+      If (ov.curState) {
+        For regionMode, regions in ov.regions {
           For k, v in regions {
             If (xpos < v.x || ypos < v.y || xpos > v.x + v.w || ypos > v.y + v.h)
               Continue
@@ -82,16 +82,16 @@ Return
 
 LButton_Up:
   if (GAME_ACTIVE) {
-    For overlayKey, overlay in Overlays {
-      If (overlay.curState) {
-        If (Overlay.regions.hasKey("hold")) {
-          For k, v in Overlay.regions.hold {
+    For overlayKey, ov in Overlays {
+      If (ov.curState) {
+        If (ov.regions.hasKey("hold")) {
+          For k, v in ov.regions.hold {
             v.releaseKeys()
           }
         }
       }
-      If (Overlay.regions.hasKey("special")) {
-        For k, v in Overlay.regions.special {
+      If (ov.regions.hasKey("special")) {
+        For k, v in ov.regions.special {
           v.newState := false
         }
       }
@@ -133,11 +133,11 @@ RenderOverlay:
       GAME.prevWindowH := GAME.windowH
     }
     For k, v in Overlays {
-      overlay := v.gui
+      ov := v.gui
       if (v.curState)
-        Gui %overlay%: Show, % Format("NoActivate x{} y{} w{} h{}", GAME.windowX + GAME.offsetX, GAME.windowY + GAME.offsetY, GAME.windowW, GAME.windowH)
+        Gui %ov%: Show, % Format("NoActivate x{} y{} w{} h{}", GAME.windowX + GAME.offsetX, GAME.windowY + GAME.offsetY, GAME.windowW, GAME.windowH)
       else
-        Gui %overlay%: Hide
+        Gui %ov%: Hide
     }
     Hotkey, $LButton, LButton_Down, On
     Hotkey, $LButton Up, LButton_Up, On
@@ -146,8 +146,8 @@ RenderOverlay:
     if (GAME_ACTIVE == 1) {
       For k, v in Overlays {
         ;v.newState := false
-        overlay := v.gui
-        Gui %overlay%: Hide
+        ov := v.gui
+        Gui %ov%: Hide
         v.releaseKeys()
       }
       Hotkey, $LButton, Off
