@@ -117,19 +117,6 @@
   }
 
   ; Hooks
-  hook_Special(region) {
-    ;global
-    ;if (region.curState) {
-    ;  if (region.specialHook = "Example") {
-    ;  }
-    ;}
-  }
-  hook_LButtonDown_AfterPress() {
-  }
-  hook_LButtonDown_AfterOverlays() {
-  }
-  hook_LButtonUp_AfterOverlays() {
-  }
   hook_MidOverlayLoop() {
     global
     ; Check state of GameUIElements and set state of Overlays accordingly

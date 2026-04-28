@@ -56,7 +56,12 @@
   }
 
   ; Hooks
-  hook_Special(v) {
+  hook_Special(r) {
+    ;global
+    ;if (r.curState) {
+    ;  if (r.specialHook = "Example") {
+    ;  }
+    ;}
   }
   hook_LButtonDown_AfterHold() {
   }

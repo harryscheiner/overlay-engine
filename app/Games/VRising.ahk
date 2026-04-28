@@ -189,8 +189,6 @@
     For k, v in Overlays.General.regions.toggle
       v.releaseKeys()
   }
-  hook_LButtonDown_AfterOverlays() {
-  }
   hook_LButtonUp_AfterOverlays() {
     global
     ; PrimaryAttack click fix control
