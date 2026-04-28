@@ -124,6 +124,14 @@ RenderOverlay:
     if (!GAME.initialized) {
       GAME.init()
     }
+    if (GAME.windowW != GAME.prevWindowW || GAME.windowH != GAME.prevWindowH) {
+      GAME.setRegionPositions()
+      For k, v in Overlays {
+        v.updateRegionPositions()
+      }
+      GAME.prevWindowW := GAME.windowW
+      GAME.prevWindowH := GAME.windowH
+    }
     For k, v in Overlays {
       overlay := v.gui
       if (v.curState)
@@ -153,22 +161,6 @@ Return
 ReleaseAllKeys:
   For k, v in Keys {
     v.forceRelease()
-  }
-Return
-
-; Hook into Gui Resize trigger
-GuiSize:
-  If A_EventInfo = 1 ; Minimized
-    Return
-
-  ; Otherwise, the window was resized, maximized, or restored
-  GAME.setRegionPositions() ; TODO: This runs once for each active Overlay, but it only needs to run once for each resize
-  For k, v in Overlays {
-    overlay := v.gui
-    if (A_Gui == overlay) {
-      v.updateRegionPositions()
-      break
-    }
   }
 Return
 
