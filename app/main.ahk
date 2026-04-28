@@ -25,7 +25,7 @@ ClickedRegion := false
 SysGet, sizeframe, 33
 SysGet, cyborder, 8
 Gui, Font, s12
-Gui, Add, Text, x0 w280 +Center, % "Game overlay is now running."
+Gui, Add, Text, x0 w280 +Center vGameTitleLine, % "Waiting for game..."
 Gui, Add, Text, x0 w280 +Center vDebugLine1, % "To exit the program, press Ctrl+Esc"
 Gui, Add, Text, x0 w280 +Center vDebugLine2, % "or close this window."
 Gui, Add, Button, x110 w60 +Center, % "Close", Close
@@ -35,7 +35,10 @@ Gui, Show, % "x" A_ScreenWidth - 280 - sizeframe - cyborder " y" cyborder " w280
 Keys := {}
 Overlays := {}
 GameUIElements := {}
+GAME := false
+GAME_CLASSES := []
 
+SetTimer OverlayLoop, 100
 goSub Main
 Return
 
@@ -119,6 +122,20 @@ OverlayLoop:
 Return
 
 RenderOverlay:
+  if (!GAME) {
+    SetTitleMatchMode 3
+    For i, entry in GAME_CLASSES {
+      If WinExist(entry.title) {
+        global GAME_TITLE
+        GAME_TITLE := entry.title
+        CLASS_NAME := entry.cls
+        GAME := new %CLASS_NAME%()
+        GuiControl,, GameTitleLine, % "Game Detected: " CLASS_NAME
+        Break
+      }
+    }
+    Return
+  }
   if (hGame := WinActive(GAME_TITLE)) {
     GAME.getPos(hGame)
     if (!GAME.initialized) {

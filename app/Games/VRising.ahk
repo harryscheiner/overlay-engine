@@ -1,11 +1,5 @@
 ﻿Class VRising extends Game {
-  ; Init functions
-  matchGame() {
-    global
-    SetTitleMatchMode 3
-    GAME_TITLE := "VRising"
-    ; NOTE: All coordinates expect game to be running at 1152x720 resolution
-  }
+  ; NOTE: All coordinates expect game to be running at 1152x720 resolution
   setKeys() {
     global
     Keys.Slot1 := new Key("1")
@@ -220,4 +214,4 @@
     }
   }
 }
-GAME := new VRising()
+GAME_CLASSES.Push({cls: "VRising", title: "VRising"})

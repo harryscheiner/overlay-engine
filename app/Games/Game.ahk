@@ -1,13 +1,11 @@
-﻿Class Game {
+Class Game {
   initialized := false
   prevWindowW := -1
   prevWindowH := -1
 
   __New() {
-    this.matchGame()
     this.offsetX := getWindowOffset("x")
     this.offsetY := getWindowOffset("y")
-    SetTimer OverlayLoop, 100
   }
 
   ; Get window position/dimensions
@@ -27,22 +25,6 @@
     this.setOverlays()
     this.setGameUIElements()
     this.setRegions()
-  }
-  matchGame() {
-    ; EXAMPLES:
-    
-    ;global ; Must begin script with this
-    
-    ; Set the match mode
-    ;SetTitleMatchMode 2 ; 1 = Starts with, 2 = Contains, 3 = Exact
-    
-    ; Open a new window - "New Text Document.txt - Notepad"
-    ; To match by title:
-    ;GAME_TITLE := "Notepad"                         ; Works with 2
-    ;GAME_TITLE := "New Text Document.txt - Notepad" ; Works with 2 or 3
-    ;GAME_TITLE := "New"                             ; Works with 1 or 2
-    ; To match by EXE name:
-    ;GAME_TITLE := "ahk_exe notepad.exe"             ; Works with 1, 2, or 3
   }
   setKeys() {
   }

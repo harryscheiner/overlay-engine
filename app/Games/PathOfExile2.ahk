@@ -1,11 +1,5 @@
 ﻿Class PathOfExile2 extends Game {
-  ; Init functions
-  matchGame() {
-    global
-    SetTitleMatchMode 3
-    GAME_TITLE := "Path of Exile 2"
-    ; NOTE: All coordinates expect game to be running at APPROXIMATELY 880x600 resolution
-  }
+  ; NOTE: All coordinates expect game to be running at APPROXIMATELY 880x600 resolution
   setKeys() {
     global
     ; Flasks
@@ -153,4 +147,4 @@
     Overlays.General.newState := true ; Always visible
   }
 }
-GAME := new PathOfExile2()
+GAME_CLASSES.Push({cls: "PathOfExile2", title: "Path of Exile 2"})

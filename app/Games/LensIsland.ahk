@@ -1,11 +1,5 @@
 ﻿Class LensIsland extends Game {
-  ; Init functions
-  matchGame() {
-    global
-    SetTitleMatchMode 3
-    GAME_TITLE := "Len's Island"
-    ; NOTE: All coordinates expect game to be running at 1128x634 resolution with Large UI Scale
-  }
+  ; NOTE: All coordinates expect game to be running at 1128x634 resolution with Large UI Scale
   setKeys() {
     global
     ; Hotbar
@@ -169,4 +163,4 @@
     Overlays.Cursor.regions.passthrough.FauxCursor.updateGuiControlPosition()
   }
 }
-GAME := new LensIsland()
+GAME_CLASSES.Push({cls: "LensIsland", title: "Len's Island"})

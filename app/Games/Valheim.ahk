@@ -1,11 +1,5 @@
 ﻿Class Valheim extends Game {
-  ; Init functions
-  matchGame() {
-    global
-    SetTitleMatchMode 3
-    GAME_TITLE := "Valheim"
-    ; NOTE: All coordinates expect game to be running at 867x726 resolution with 115% GUI Scale
-  }
+  ; NOTE: All coordinates expect game to be running at 867x726 resolution with 115% GUI Scale
   setKeys() {
     global
     ; Skills
@@ -126,4 +120,4 @@
     Overlays.General.newState := true ; Always visible
   }
 }
-GAME := new Valheim()
+GAME_CLASSES.Push({cls: "Valheim", title: "Valheim"})
