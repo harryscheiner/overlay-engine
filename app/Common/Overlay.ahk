@@ -44,6 +44,10 @@
     For k, v in this.regions.hold {
       v.forceReleaseKeys()
     }
+    ; Release all Hover Region keys
+    For k, v in this.regions.hover {
+      v.forceReleaseKeys()
+    }
   }
   addRegion(id, opts) {
     opts.mode := opts.hasKey("mode") ? opts.mode : "none"

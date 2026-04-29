@@ -114,6 +114,27 @@ OverlayLoop:
 
     GAME.hook_MidOverlayLoop()
 
+    MouseGetPos, xpos, ypos
+    For k, v in Overlays {
+      If (v.curState && v.regions.hasKey("hover")) {
+        activeKeys := {}
+        For regionId, region in v.regions.hover {
+          isInside := (xpos >= region.x && xpos <= region.x + region.w
+                    && ypos >= region.y && ypos <= region.y + region.h)
+          If (isInside) {
+            For ki, key in region.keys {
+              activeKeys[key.key] := true
+            }
+          }
+        }
+        For regionId, region in v.regions.hover {
+          For ki, key in region.keys {
+            key.newState := activeKeys.hasKey(key.key)
+          }
+        }
+      }
+    }
+
     For k, v in Overlays {
       v.update()
     }
