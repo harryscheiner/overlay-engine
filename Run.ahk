@@ -4,4 +4,5 @@
 #Include ./app/Games/Valheim.ahk
 #Include ./app/Games/LensIsland.ahk
 #Include ./app/Games/PathOfExile2.ahk
+#Include ./app/Games/ArkSurvivalEvolved.ahk
 Return
