@@ -1,5 +1,5 @@
 ﻿Class ArkSurvivalEvolved extends Game {
-  ; NOTE: All coordinates expect game to be running at APPROXIMATELY 880x600 resolution
+  ; NOTE: All coordinates expect game to be running at APPROXIMATELY 1600x850 resolution
   setKeys() {
     global
     ; Movement
@@ -34,4 +34,4 @@
     Overlays.Movement.newState := true ; Always visible
   }
 }
-GAME_CLASSES.Push({cls: "ArkSurvivalEvolved", title: "OverlayEngineTest"})
+GAME_CLASSES.Push({cls: "ArkSurvivalEvolved", title: "ARK: Survival Evolved"})
