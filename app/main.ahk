@@ -107,6 +107,7 @@ LButton_Up:
 Return
 
 OverlayLoop:
+  DllCall("ClipCursor", "Ptr", 0)
   if (GAME_ACTIVE) {
     For k, v in GameUIElements {
       v.update()
