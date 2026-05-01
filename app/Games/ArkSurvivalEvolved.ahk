@@ -18,14 +18,14 @@
   setRegions() {
     global
     ; Overlay: Movement
-    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 409, y: 287, w: 50, h: 30, keys: [Keys.MoveUp], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 461, y: 295, w: 30, h: 30, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 469, y: 327, w: 30, h: 50, keys: [Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 461, y: 379, w: 30, h: 30, keys: [Keys.MoveDown, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 409, y: 387, w: 50, h: 30, keys: [Keys.MoveDown], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 377, y: 379, w: 30, h: 30, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 369, y: 327, w: 30, h: 50, keys: [Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 377, y: 295, w: 30, h: 30, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 775, y: 340, w: 50, h: 50, keys: [Keys.MoveUp], mode: "hover"})
+    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 824, y: 357, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 835, y: 400, w: 50, h: 50, keys: [Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 824, y: 449, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 775, y: 460, w: 50, h: 50, keys: [Keys.MoveDown], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 732, y: 449, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hover"})
+    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 715, y: 400, w: 50, h: 50, keys: [Keys.MoveLeft], mode: "hover"})
+    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 732, y: 357, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hover"})
   }
 
   ; Hooks
