@@ -180,7 +180,9 @@ RenderOverlay:
     }
     Hotkey, $LButton, LButton_Down, On
     Hotkey, $LButton Up, LButton_Up, On
-    GAME_ACTIVE := 1
+    if (GAME_ACTIVE != 1) {
+      GAME_ACTIVE := 1
+    }
   } else {
     if (GAME_ACTIVE == 1) {
       For k, v in Overlays {
