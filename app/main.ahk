@@ -38,7 +38,7 @@ GameUIElements := {}
 GAME := false
 GAME_CLASSES := []
 
-SetTimer OverlayLoop, 100
+SetTimer OverlayLoop, 50
 goSub Main
 Return
 
