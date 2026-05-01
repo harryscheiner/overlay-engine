@@ -1,4 +1,4 @@
-Class Game {
+﻿Class Game {
   initialized := false
   prevWindowW := -1
   prevWindowH := -1
