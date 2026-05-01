@@ -13,6 +13,7 @@
     global
     ; Overlays
     Overlays.Movement := new Overlay({transparency: 120})
+    Overlays.Cursor := new Overlay({transparency: 255}) ; Faux Cursor
   }
 
   setRegions() {
@@ -26,12 +27,21 @@
     Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 732, y: 449, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hover"})
     Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 715, y: 400, w: 50, h: 50, keys: [Keys.MoveLeft], mode: "hover"})
     Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 732, y: 357, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hover"})
+
+    ; Overlay: Cursor
+    Gui, % Overlays.Cursor.gui ": Add", Pic, x0 y0 w32 h32 vFauxCursor, % A_WinDir . "\Cursors\aero_arrow.cur"
   }
 
   ; Hooks
   hook_MidOverlayLoop() {
     global
     Overlays.Movement.newState := true ; Always visible
+    Overlays.Cursor.newState := true ; Always visible
+
+    ; Faux cursor since the game cursor can be a little funny sometimes
+    MouseGetPos, xpos, ypos
+    GuiControl, % Overlays.Cursor.gui ": MoveDraw", FauxCursor, % "+X" xpos " +Y" ypos
+
   }
 }
 GAME_CLASSES.Push({cls: "ArkSurvivalEvolved", title: "ARK: Survival Evolved"})
