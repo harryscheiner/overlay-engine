@@ -1,5 +1,5 @@
 ﻿Class ArkSurvivalEvolved extends Game {
-  ; NOTE: All coordinates expect game to be running at APPROXIMATELY 1600x850 resolution
+  ; NOTE: All coordinates expect game to be running at APPROXIMATELY 1366x768 resolution
   setKeys() {
     global
     ; Movement
@@ -20,33 +20,33 @@
   setOverlays() {
     global
     ; Overlays
-    Overlays.Movement := new Overlay({transparency: 120})
-    Overlays.Camera := new Overlay({transparency: 120})
-    Overlays.General := new Overlay({transparency: 120})
+    Overlays.Movement := new Overlay({transparency: 170})
+    Overlays.Camera := new Overlay({transparency: 170})
+    Overlays.General := new Overlay({transparency: 170})
     Overlays.Cursor := new Overlay({transparency: 255}) ; Faux Cursor
   }
 
   setRegions() {
     global
     ; Overlay: Movement
-    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 775, y: 340, w: 50, h: 50, keys: [Keys.MoveUp], mode: "hover"})
-    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 824, y: 357, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hover"})
-    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 835, y: 400, w: 50, h: 50, keys: [Keys.MoveRight], mode: "hover"})
-    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 824, y: 449, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveRight], mode: "hover"})
-    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 775, y: 460, w: 50, h: 50, keys: [Keys.MoveDown], mode: "hover"})
-    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 732, y: 449, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hover"})
-    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 715, y: 400, w: 50, h: 50, keys: [Keys.MoveLeft], mode: "hover"})
-    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 732, y: 357, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hover"})
+    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 658, y: 299, w: 50, h: 50, keys: [Keys.MoveUp], mode: "hover"})
+    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 707, y: 316, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 718, y: 359, w: 50, h: 50, keys: [Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 707, y: 408, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveRight], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 658, y: 419, w: 50, h: 50, keys: [Keys.MoveDown], mode: "hover"})
+    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 615, y: 408, w: 44, h: 44, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hover"})
+    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 598, y: 359, w: 50, h: 50, keys: [Keys.MoveLeft], mode: "hover"})
+    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 615, y: 316, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hover"})
 
     ; Overlay: Camera
-    Overlays.Camera.addRegion("CameraUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 785, y: 600, w: 30, h: 40, keys: [Keys.CameraUp], mode: "hover"})
-    Overlays.Camera.addRegion("CameraRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 814, y: 619, w: 60, h: 40, keys: [Keys.CameraRight], mode: "hover"})
-    Overlays.Camera.addRegion("CameraDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 785, y: 639, w: 30, h: 40, keys: [Keys.CameraDown], mode: "hover"})
-    Overlays.Camera.addRegion("CameraLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 726, y: 619, w: 60, h: 40, keys: [Keys.CameraLeft], mode: "hover"})
+    Overlays.Camera.addRegion("CameraUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 668, y: 559, w: 30, h: 40, keys: [Keys.CameraUp], mode: "hover"})
+    Overlays.Camera.addRegion("CameraRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 697, y: 578, w: 60, h: 40, keys: [Keys.CameraRight], mode: "hover"})
+    Overlays.Camera.addRegion("CameraDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 668, y: 598, w: 30, h: 40, keys: [Keys.CameraDown], mode: "hover"})
+    Overlays.Camera.addRegion("CameraLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 609, y: 578, w: 60, h: 40, keys: [Keys.CameraLeft], mode: "hover"})
 
     ; Overlay: General
-    Overlays.General.addRegion("Attack",            {text: "Attack", color: "0x0e550a", colorOff: "0x550e0a", x: 732, y: 542, w: 54, h: 35, keys: [Keys.Attack], mode: "toggle"})
-    Overlays.General.addRegion("Jump",              {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 814, y: 542, w: 54, h: 35, keys: [Keys.Jump], mode: "timer", time: 2000})
+    Overlays.General.addRegion("Attack",            {text: "Attack", color: "0x0e550a", colorOff: "0x550e0a", x: 615, y: 501, w: 54, h: 35, keys: [Keys.Attack], mode: "toggle"})
+    Overlays.General.addRegion("Jump",              {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 697, y: 501, w: 54, h: 35, keys: [Keys.Jump], mode: "timer", time: 2000})
 
     ; Overlay: Cursor
     Gui, % Overlays.Cursor.gui ": Add", Pic, x0 y0 w32 h32 vFauxCursor, % A_WinDir . "\Cursors\aero_arrow.cur"
