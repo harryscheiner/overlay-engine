@@ -52,8 +52,8 @@
     Overlays.General.addRegion("GenAttack",         {text: "Attack", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 491, w: 54, h: 35, keys: [Keys.Attack], mode: "toggle"})
     Overlays.General.addRegion("GenJump",           {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 491, w: 54, h: 35, keys: [Keys.Jump], mode: "timer", time: 2000})
     Overlays.General.addRegion("GenUse",            {text: "E", color: "0x0e550a", colorOff: "0x550e0a", x: 670, y: 585, w: 26, h: 27, keys: [Keys.Use], mode: "hold"})
-    Overlays.General.addRegion("GenCrouch",         {text: "Crouch", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 527, w: 54, h: 35, keys: [Keys.Crouch], mode: "toggle"})
-    Overlays.General.addRegion("GenProne",          {text: "Prone", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 527, w: 54, h: 35, keys: [Keys.Prone], mode: "toggle"})
+    Overlays.General.addRegion("GenCrouch",         {text: "Crouch", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 527, w: 54, h: 35, keys: [Keys.Crouch], mode: "press"})
+    Overlays.General.addRegion("GenProne",          {text: "Prone", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 527, w: 54, h: 35, keys: [Keys.Prone], mode: "press"})
 
     Overlays.Special.addRegion("Teleport",          {text: "Teleport", color: "0x000000", background: "0x3088F3", x: 150, y: 10, w: 60, h: 20, keys: [], mode: "special", specialHook: "teleportToHarry"})
     Overlays.Special.addRegion("Repair",            {text: "Repair", color: "0x000000", background: "0x3088F3", x: 150, y: 32, w: 60, h: 20, keys: [], mode: "special", specialHook: "repairGear"})
@@ -72,22 +72,12 @@
         Sleep 20
         Send, cheat TeleportToPlayerName Harry
         Send, {Enter}
-        Sleep 20
-        Send, {Tab}
-        Sleep 20
-        Send, {Tab}
-        Sleep 20
       } else if (region.specialHook = "repairGear") {
         Sleep 200
         Send, {Tab}
         Sleep 20
         Send, cheat AddEquipmentDurability 99999
         Send, {Enter}
-        Sleep 20
-        Send, {Tab}
-        Sleep 20
-        Send, {Tab}
-        Sleep 20
       }
     }
   }
