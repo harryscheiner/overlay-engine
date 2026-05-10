@@ -43,17 +43,17 @@
     Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 615, y: 316, w: 44, h: 44, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hover"})
 
     ; Overlay: Camera
-    Overlays.Camera.addRegion("CameraUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 668, y: 549, w: 30, h: 35, keys: [Keys.CameraUp], mode: "hover"})
-    Overlays.Camera.addRegion("CameraRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 697, y: 578, w: 60, h: 40, keys: [Keys.CameraRight], mode: "hover"})
-    Overlays.Camera.addRegion("CameraDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 668, y: 613, w: 30, h: 35, keys: [Keys.CameraDown], mode: "hover"})
-    Overlays.Camera.addRegion("CameraLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 609, y: 578, w: 60, h: 40, keys: [Keys.CameraLeft], mode: "hover"})
+    Overlays.Camera.addRegion("CameraUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 668, y: 539, w: 30, h: 35, keys: [Keys.CameraUp], mode: "hover"})
+    Overlays.Camera.addRegion("CameraRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 707, y: 578, w: 60, h: 40, keys: [Keys.CameraRight], mode: "hover"})
+    Overlays.Camera.addRegion("CameraDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 668, y: 623, w: 30, h: 35, keys: [Keys.CameraDown], mode: "hover"})
+    Overlays.Camera.addRegion("CameraLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 599, y: 578, w: 60, h: 40, keys: [Keys.CameraLeft], mode: "hover"})
 
     ; Overlay: General
     Overlays.General.addRegion("GenAttack",         {text: "Attack", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 491, w: 54, h: 35, keys: [Keys.Attack], mode: "toggle"})
     Overlays.General.addRegion("GenJump",           {text: "Jump", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 491, w: 54, h: 35, keys: [Keys.Jump], mode: "timer", time: 2000})
     Overlays.General.addRegion("GenUse",            {text: "E", color: "0x0e550a", colorOff: "0x550e0a", x: 670, y: 585, w: 26, h: 27, keys: [Keys.Use], mode: "hold"})
-    Overlays.General.addRegion("GenCrouch",         {text: "Crouch", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 527, w: 54, h: 35, keys: [Keys.Crouch], mode: "press"})
-    Overlays.General.addRegion("GenProne",          {text: "Prone", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 527, w: 54, h: 35, keys: [Keys.Prone], mode: "press"})
+    Overlays.General.addRegion("GenCrouch",         {text: "Crouch", color: "0x0e550a", colorOff: "0x550e0a", x: 605, y: 527, w: 54, h: 35, keys: [Keys.Crouch], mode: "hold"})
+    Overlays.General.addRegion("GenProne",          {text: "Prone", color: "0x0e550a", colorOff: "0x550e0a", x: 707, y: 527, w: 54, h: 35, keys: [Keys.Prone], mode: "hold"})
 
     Overlays.Special.addRegion("Teleport",          {text: "Teleport", color: "0x000000", background: "0x3088F3", x: 150, y: 10, w: 60, h: 20, keys: [], mode: "special", specialHook: "teleportToHarry"})
     Overlays.Special.addRegion("Repair",            {text: "Repair", color: "0x000000", background: "0x3088F3", x: 150, y: 32, w: 60, h: 20, keys: [], mode: "special", specialHook: "repairGear"})
