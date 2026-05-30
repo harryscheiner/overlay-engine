@@ -6,10 +6,17 @@
     this.y := opts.y
     this.w := opts.w
     this.h := opts.h
-    this.color := opts.color
     this.dependency := opts.hasKey("dependency") ? opts.dependency : false
     this.dependencyLogic := opts.hasKey("dependencyLogic") ? opts.dependencyLogic : true
-    this.variance := opts.hasKey("variance") ? opts.variance : 2
+
+    if (opts.hasKey("image")) {
+      this.image := opts.image
+      this.variance := opts.hasKey("variance") ? opts.variance : 20
+      this.trans := opts.hasKey("trans") ? opts.trans : false
+    } else {
+      this.color := opts.color
+      this.variance := opts.hasKey("variance") ? opts.variance : 2
+    }
   }
   update() {
     ; Dependency checking
@@ -23,9 +30,17 @@
     }
 
     if (AllowCheck) {
-      ; Check to see if the UI Element is visible
-      PixelSearch, Px, Py, this.x, this.y, this.x + this.w, this.y + this.h, this.color, this.variance, Fast RGB
-      this.newState := !ErrorLevel
+      if (this.hasKey("image")) {
+        imgOpts := "*" this.variance
+        if (this.trans)
+          imgOpts := "*Trans" this.trans " " imgOpts
+        ImageSearch, Px, Py, this.x, this.y, this.x + this.w, this.y + this.h, % imgOpts " " this.image
+        this.newState := !ErrorLevel
+      } else {
+        ; Check to see if the UI Element is visible
+        PixelSearch, Px, Py, this.x, this.y, this.x + this.w, this.y + this.h, this.color, this.variance, Fast RGB
+        this.newState := !ErrorLevel
+      }
     } else {
       this.newState := false
     }
