@@ -123,6 +123,8 @@
     For k, v in this.keys {
       key := v.key
       Switch (key) {
+        case "LButton":
+          Click
         case "RButton":
           Click, Right
         case "MButton":
