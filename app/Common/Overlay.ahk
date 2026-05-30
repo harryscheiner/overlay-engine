@@ -48,6 +48,10 @@
     For k, v in this.regions.hover {
       v.forceReleaseKeys()
     }
+    ; Release all HoverTimer Region keys
+    For k, v in this.regions.hovertimer {
+      v.disableTimers()
+    }
   }
   addRegion(id, opts) {
     opts.mode := opts.hasKey("mode") ? opts.mode : "none"

@@ -11,7 +11,7 @@
     this.w := opts.hasKey("w") ? opts.w : 0
     this.h := opts.hasKey("h") ? opts.h : 0
     this.keys := opts.keys ; Array of Key objects
-    this.mode := opts.mode ; `press` | `toggle` | `hold` | `special` | `timer`
+    this.mode := opts.mode ; `press` | `toggle` | `hold` | `special` | `timer` | `hovertimer`
     this.specialHook := opts.hasKey("specialHook") ? opts.specialHook : false
 
     this.hasText := opts.hasKey("text")
@@ -19,7 +19,7 @@
 
     this.time := opts.hasKey("time") ? opts.time : 0
     Switch (this.mode) {
-      case "timer":
+      case "timer", "hovertimer":
         this.timerFunc := ObjBindMethod(this, "timerEvent")
     }
 
@@ -65,7 +65,7 @@
     changed := false
     if (this.curState != this.newState) {
       this.curState := this.newState
-      if (this.mode = "toggle" || this.mode = "timer") {
+      if (this.mode = "toggle" || this.mode = "timer" || this.mode = "hovertimer") {
         this.updateGuiControl()
       }
       changed := true
@@ -112,9 +112,11 @@
       GuiControl, % this.overlay ": Hide", % this.id "_Text"
   }
   timerEvent() {
-    this.updateGuiControl(true)
+    if (this.mode != "hovertimer")
+      this.updateGuiControl(true)
     this.pressKeys()
-    this.updateGuiControl(false)
+    if (this.mode != "hovertimer")
+      this.updateGuiControl(false)
   }
 
   pressKeys() {

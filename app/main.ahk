@@ -134,6 +134,16 @@ OverlayLoop:
           }
         }
       }
+      If (v.curState && v.regions.hasKey("hovertimer")) {
+        For regionId, region in v.regions.hovertimer {
+          isInside := (xpos >= region.x && xpos <= region.x + region.w
+                    && ypos >= region.y && ypos <= region.y + region.h)
+          If (isInside && !region.newState)
+            region.timerKeys()
+          Else If (!isInside && region.newState)
+            region.timerKeys()
+        }
+      }
     }
 
     For k, v in Overlays {
