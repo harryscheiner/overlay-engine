@@ -153,7 +153,7 @@
     Overlays.Camera.newState    := Overlays.Movement.newState
     Overlays.General.newState   := Overlays.Movement.newState
     Overlays.Inventory.newState := MostMenusClosed
-    Overlays.Special.newState   := !GameUIElements.SettingsOpen.curState
+    Overlays.Special.newState   := false ; !GameUIElements.SettingsOpen.curState
     Overlays.Cursor.newState    := Overlays.Movement.newState
 
     ; Faux cursor since the game cursor can be a little funny sometimes
