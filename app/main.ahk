@@ -122,6 +122,7 @@ OverlayLoop:
         For regionId, region in v.regions.hover {
           isInside := (xpos >= region.x && xpos <= region.x + region.w
                     && ypos >= region.y && ypos <= region.y + region.h)
+          region.newState := isInside ? 1 : 0
           If (isInside) {
             For ki, key in region.keys {
               activeKeys[key.key] := true

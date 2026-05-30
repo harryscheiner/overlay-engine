@@ -65,7 +65,7 @@
     changed := false
     if (this.curState != this.newState) {
       this.curState := this.newState
-      if (this.mode = "toggle" || this.mode = "timer" || this.mode = "hovertimer") {
+      if (this.mode = "toggle" || this.mode = "timer" || this.mode = "hovertimer" || this.mode = "hover") {
         this.updateGuiControl()
       }
       changed := true
