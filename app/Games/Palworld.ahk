@@ -13,7 +13,7 @@
     Keys.CameraDown := new Key("Down")
     Keys.CameraRight := new Key("Right")
     ; General
-    Keys.Attack := new Key("LButton")
+    Keys.Attack := new Key("RButton")
     Keys.Jump := new Key("Space")
     Keys.Use := new Key("f")
     Keys.Crouch := new Key("c")
