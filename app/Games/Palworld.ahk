@@ -19,6 +19,8 @@
     Keys.Crouch := new Key("c")
     Keys.ReloadWeapon := new Key("r")
     Keys.PalSphere := new Key("q")
+    Keys.WeaponPrev := new Key("WheelUp")
+    Keys.WeaponNext := new Key("WheelDown")
     ; Inventory
     Keys.Inventory := new Key("Tab")
     Keys.Build := new Key("b")
@@ -76,6 +78,10 @@
     Overlays.General.addRegion("GenCrouch",         {text: "Crouch", color: "0x000000", background: "0x3088F3", keys: [Keys.Crouch], mode: "press"})
     Overlays.General.addRegion("GenPalSphere",      {text: "Q", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.PalSphere], mode: "toggle"})
 
+    Overlays.General.addRegion("WeaponPrev",        {text: "↑", color: "0x000000", background: "0x3088F3", keys: [Keys.WeaponPrev], mode: "press"})
+    Overlays.General.addRegion("WeaponNext",        {text: "↓", color: "0x000000", background: "0x3088F3", keys: [Keys.WeaponNext], mode: "press"})
+
+
     ; Overlay: Inventory
     Overlays.Inventory.addRegion("OpenInv",         {text: "Inv", color: "0x000000", background: "0x3088F3", keys: [Keys.Inventory], mode: "press"})
 
@@ -112,6 +118,9 @@
     Overlays.General.regions.press.GenReload.updateOpts(      {x: centerX + Floor(24 * scaleH),  y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
     Overlays.General.regions.press.GenCrouch.updateOpts(      {x: centerX + Floor(71 * scaleH),  y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
     Overlays.General.regions.toggle.GenPalSphere.updateOpts(  {x: centerX + Floor(118 * scaleH), y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
+    Overlays.General.regions.press.WeaponPrev.updateOpts(     {x: centerX + Floor(170 * scaleH),  y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
+    Overlays.General.regions.press.WeaponNext.updateOpts(     {x: centerX + Floor(170 * scaleH),  y: centerY + Floor(266 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
+
     
     ; Inventory (anchored relative to screen center)
     Overlays.Inventory.regions.press.OpenInv.updateOpts(       {x: centerX - Floor(164 * scaleH), y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
