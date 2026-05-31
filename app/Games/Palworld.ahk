@@ -25,6 +25,10 @@
     Keys.Inventory := new Key("Tab")
     Keys.Build := new Key("b")
     Keys.Map := new Key("m")
+
+    Keys.PalPrev := new Key("1")
+    Keys.PalDeploy := new Key("e")
+    Keys.PalNext := new Key("3")
   }
 
   setOverlays() {
@@ -80,6 +84,10 @@
 
     Overlays.General.addRegion("WeaponPrev",        {text: "↑", color: "0x000000", background: "0x3088F3", keys: [Keys.WeaponPrev], mode: "press"})
     Overlays.General.addRegion("WeaponNext",        {text: "↓", color: "0x000000", background: "0x3088F3", keys: [Keys.WeaponNext], mode: "press"})
+    
+    Overlays.General.addRegion("PalPrev",           {text: "", color: "0x000000", background: "0x3088F3", keys: [Keys.PalPrev], mode: "press"})
+    Overlays.General.addRegion("PalDeploy",         {text: "", color: "0x000000", background: "0x3088F3", keys: [Keys.PalDeploy], mode: "press"})
+    Overlays.General.addRegion("PalNext",           {text: "", color: "0x000000", background: "0x3088F3", keys: [Keys.PalNext], mode: "press"})
 
 
     ; Overlay: Inventory
@@ -120,7 +128,10 @@
     Overlays.General.regions.toggle.GenPalSphere.updateOpts(  {x: centerX + Floor(118 * scaleH), y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
     Overlays.General.regions.press.WeaponPrev.updateOpts(     {x: centerX + Floor(170 * scaleH),  y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
     Overlays.General.regions.press.WeaponNext.updateOpts(     {x: centerX + Floor(170 * scaleH),  y: centerY + Floor(266 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
-
+    
+    Overlays.General.regions.press.PalPrev.updateOpts(        {x: 28, y: 592, w: 20, h: 20})
+    Overlays.General.regions.press.PalDeploy.updateOpts(      {x: 117, y: 547, w: 20, h: 20})
+    Overlays.General.regions.press.PalNext.updateOpts(        {x: 209, y: 592, w: 20, h: 20})
     
     ; Inventory (anchored relative to screen center)
     Overlays.Inventory.regions.press.OpenInv.updateOpts(       {x: centerX - Floor(164 * scaleH), y: centerY + Floor(225 * scaleH), w: Floor(46 * scaleH), h: Floor(40 * scaleH)})
