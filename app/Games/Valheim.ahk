@@ -1,5 +1,5 @@
 ﻿Class Valheim extends Game {
-  ; NOTE: All coordinates expect game to be running at 867x726 resolution with 115% GUI Scale
+  ; NOTE: Regions are positioned responsively, scaled from an 867x726 baseline resolution
   setKeys() {
     global
     ; Skills
@@ -70,44 +70,90 @@
   setRegions() {
     global
     ; Overlay: Zoom
-    Overlays.Map.addRegion("ZoomIn",   {text: "↑ In ↑",  color: "0x000000", background: "0x3088F3", x: 409, y: 419, w: 50, h: 16, keys: [Keys.ZoomIn], mode: "press"})
-    Overlays.Map.addRegion("ZoomOut",  {text: "↓ Out ↓", color: "0x000000", background: "0x3088F3", x: 409, y: 437, w: 50, h: 16, keys: [Keys.ZoomOut], mode: "press"})
-    Overlays.Map.addRegion("Map",      {text: "Map",      color: "0x000000", background: "0x3088F3", x: 461, y: 429, w: 30, h: 16, keys: [Keys.Map], mode: "press"})
-    Overlays.Map.addRegion("Ping",     {text: "Ping",     color: "0x000000", background: "0x3088F3", x: 409, y: 387, w: 50, h: 30, keys: [Keys.SecondaryAttack], mode: "press"})
+    Overlays.Map.addRegion("ZoomIn",   {text: "↑ In ↑",  color: "0x000000", background: "0x3088F3", keys: [Keys.ZoomIn], mode: "press"})
+    Overlays.Map.addRegion("ZoomOut",  {text: "↓ Out ↓", color: "0x000000", background: "0x3088F3", keys: [Keys.ZoomOut], mode: "press"})
+    Overlays.Map.addRegion("Map",      {text: "Map",      color: "0x000000", background: "0x3088F3", keys: [Keys.Map], mode: "press"})
+    Overlays.Map.addRegion("Ping",     {text: "Ping",     color: "0x000000", background: "0x3088F3", keys: [Keys.SecondaryAttack], mode: "press"})
 
     ; Overlay: HUDCenter
-    Overlays.HUDCenter.addRegion("SecondaryAttack", {text: "Atk2", color: "0x000000", background: "0x3088F3", x: 377, y: 277, w: 30, h: 16, keys: [Keys.SecondaryAttack], mode: "hold"})
-    Overlays.HUDCenter.addRegion("Block",           {text: "Block", color: "0x000000", background: "0x3088F3", x: 461, y: 277, w: 30, h: 16, keys: [Keys.Block], mode: "hold"})
-    Overlays.HUDCenter.addRegion("Inventory",       {text: "Inv",  color: "0x000000", background: "0x3088F3", x: 377, y: 411, w: 30, h: 16, keys: [Keys.Inventory], mode: "press"})
-    Overlays.HUDCenter.addRegion("Use",             {text: "Use",  color: "0x000000", background: "0x3088F3", x: 461, y: 411, w: 30, h: 16, keys: [Keys.Use], mode: "press"})
-    Overlays.HUDCenter.addRegion("Power",           {text: "Power",  color: "0x000000", background: "0x3088F3", x: 409, y: 419, w: 50, h: 16, keys: [Keys.Power], mode: "press"})
-    ;Overlays.HUDCenter.addRegion("Sit",             {text: "Sit",  color: "0x000000", background: "0x3088F3", x: 409, y: 455, w: 50, h: 16, keys: [Keys.Sit], mode: "press"})
-    Overlays.HUDCenter.addRegion("Map",             {text: "Map",  color: "0x000000", background: "0x3088F3", x: 461, y: 429, w: 30, h: 16, keys: [Keys.Map], mode: "press"})
-    
+    Overlays.HUDCenter.addRegion("SecondaryAttack", {text: "Atk2", color: "0x000000", background: "0x3088F3", keys: [Keys.SecondaryAttack], mode: "hold"})
+    Overlays.HUDCenter.addRegion("Block",           {text: "Block", color: "0x000000", background: "0x3088F3", keys: [Keys.Block], mode: "hold"})
+    Overlays.HUDCenter.addRegion("Inventory",       {text: "Inv",  color: "0x000000", background: "0x3088F3", keys: [Keys.Inventory], mode: "press"})
+    Overlays.HUDCenter.addRegion("Use",             {text: "Use",  color: "0x000000", background: "0x3088F3", keys: [Keys.Use], mode: "press"})
+    Overlays.HUDCenter.addRegion("Power",           {text: "Power",  color: "0x000000", background: "0x3088F3", keys: [Keys.Power], mode: "press"})
+    ;Overlays.HUDCenter.addRegion("Sit",             {text: "Sit",  color: "0x000000", background: "0x3088F3", keys: [Keys.Sit], mode: "press"})
+    Overlays.HUDCenter.addRegion("Map",             {text: "Map",  color: "0x000000", background: "0x3088F3", keys: [Keys.Map], mode: "press"})
+
     ; Overlay: General
-    Overlays.General.addRegion("PauseMenu",       {text: "Esc",  color: "0x000000", background: "0x3088F3", x: 377, y: 429, w: 30, h: 16, keys: [Keys.PauseMenu], mode: "press"})
+    Overlays.General.addRegion("PauseMenu",       {text: "Esc",  color: "0x000000", background: "0x3088F3", keys: [Keys.PauseMenu], mode: "press"})
 
     ; Overlay: Movement
-    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", x: 409, y: 287, w: 50, h: 30, keys: [Keys.MoveUp], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", x: 461, y: 295, w: 30, h: 30, keys: [Keys.MoveUp, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", x: 469, y: 327, w: 30, h: 50, keys: [Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", x: 461, y: 379, w: 30, h: 30, keys: [Keys.MoveDown, Keys.MoveRight], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", x: 409, y: 387, w: 50, h: 30, keys: [Keys.MoveDown], mode: "hold"})
-    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", x: 377, y: 379, w: 30, h: 30, keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", x: 369, y: 327, w: 30, h: 50, keys: [Keys.MoveLeft], mode: "hold"})
-    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", x: 377, y: 295, w: 30, h: 30, keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUp",           {text: "↑", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveUp], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUpRight",      {text: "↗", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveUp, Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveRight",        {text: "→", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDownRight",    {text: "↘", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveDown, Keys.MoveRight], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDown",         {text: "↓", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveDown], mode: "hold"})
+    Overlays.Movement.addRegion("MoveDownLeft",     {text: "↙", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveDown, Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveLeft",         {text: "←", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveLeft], mode: "hold"})
+    Overlays.Movement.addRegion("MoveUpLeft",       {text: "↖", color: "0x000000", background: "0x3088F3", keys: [Keys.MoveUp, Keys.MoveLeft], mode: "hold"})
 
-    Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x000000", background: "0x3088F3", x: 409, y: 251, w: 50, h: 16, keys: [Keys.Jump, Keys.AutoWalk], mode: "press"})
-    Overlays.Movement.addRegion("AutoWalk",         {text: "↑↑", color: "0x000000", background: "0x3088F3", x: 409, y: 269, w: 50, h: 16, keys: [Keys.AutoWalk], mode: "press"})
-    Overlays.Movement.addRegion("CameraUp",         {text: "↑", color: "0x000000", background: "0x3088F3", x: 401, y: 327, w: 10, h: 16, keys: [Keys.CameraUp], mode: "hold"})
-    Overlays.Movement.addRegion("CameraLeft",       {text: "↶", color: "0x000000", background: "0x3088F3", x: 413, y: 319, w: 20, h: 24, keys: [Keys.CameraLeft], mode: "hold"})
-    Overlays.Movement.addRegion("CameraRight",      {text: "↷", color: "0x000000", background: "0x3088F3", x: 435, y: 319, w: 20, h: 24, keys: [Keys.CameraRight], mode: "hold"})
-    Overlays.Movement.addRegion("CameraDown",       {text: "↓", color: "0x000000", background: "0x3088F3", x: 457, y: 327, w: 10, h: 16, keys: [Keys.CameraDown], mode: "hold"})
-    Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x000000", background: "0x3088F3", x: 409, y: 437, w: 50, h: 16, keys: [Keys.TeleportHome], mode: "press"})
-    Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x000000", background: "0x3088F3", x: 391, y: 455, w: 20, h: 16, keys: [Keys.TeleportToHarry], mode: "press"})
-    Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x000000", background: "0x3088F3", x: 413, y: 455, w: 20, h: 16, keys: [Keys.TeleportToKatie], mode: "press"})
-    Overlays.Movement.addRegion("TeleportToSteve",  {text: "S", color: "0x000000", background: "0x3088F3", x: 435, y: 455, w: 20, h: 16, keys: [Keys.TeleportToSteve], mode: "press"})
-    Overlays.Movement.addRegion("TeleportToDavid",  {text: "D", color: "0x000000", background: "0x3088F3", x: 457, y: 455, w: 20, h: 16, keys: [Keys.TeleportToDavid], mode: "press"})
+    Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x000000", background: "0x3088F3", keys: [Keys.Jump, Keys.AutoWalk], mode: "press"})
+    Overlays.Movement.addRegion("AutoWalk",         {text: "↑↑", color: "0x000000", background: "0x3088F3", keys: [Keys.AutoWalk], mode: "press"})
+    Overlays.Movement.addRegion("CameraUp",         {text: "↑", color: "0x000000", background: "0x3088F3", keys: [Keys.CameraUp], mode: "hold"})
+    Overlays.Movement.addRegion("CameraLeft",       {text: "↶", color: "0x000000", background: "0x3088F3", keys: [Keys.CameraLeft], mode: "hold"})
+    Overlays.Movement.addRegion("CameraRight",      {text: "↷", color: "0x000000", background: "0x3088F3", keys: [Keys.CameraRight], mode: "hold"})
+    Overlays.Movement.addRegion("CameraDown",       {text: "↓", color: "0x000000", background: "0x3088F3", keys: [Keys.CameraDown], mode: "hold"})
+    Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x000000", background: "0x3088F3", keys: [Keys.TeleportHome], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x000000", background: "0x3088F3", keys: [Keys.TeleportToHarry], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x000000", background: "0x3088F3", keys: [Keys.TeleportToKatie], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToSteve",  {text: "S", color: "0x000000", background: "0x3088F3", keys: [Keys.TeleportToSteve], mode: "press"})
+    Overlays.Movement.addRegion("TeleportToDavid",  {text: "D", color: "0x000000", background: "0x3088F3", keys: [Keys.TeleportToDavid], mode: "press"})
+  }
+
+  setRegionPositions() {
+    global
+    scaleH  := this.windowH / 726
+    centerX := Floor(this.windowW / 2)
+    centerY := Floor(this.windowH / 2)
+
+    ; Overlay: Map (anchored relative to screen center)
+    Overlays.Map.regions.press.ZoomIn.updateOpts(  {x: centerX - Floor(24 * scaleH), y: centerY + Floor(56 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Map.regions.press.ZoomOut.updateOpts( {x: centerX - Floor(24 * scaleH), y: centerY + Floor(74 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Map.regions.press.Map.updateOpts(     {x: centerX + Floor(28 * scaleH), y: centerY + Floor(66 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Map.regions.press.Ping.updateOpts(    {x: centerX - Floor(24 * scaleH), y: centerY + Floor(24 * scaleH), w: Floor(50 * scaleH), h: Floor(30 * scaleH)})
+
+    ; Overlay: HUDCenter (anchored relative to screen center)
+    Overlays.HUDCenter.regions.hold.SecondaryAttack.updateOpts( {x: centerX - Floor(56 * scaleH), y: centerY - Floor(86 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.hold.Block.updateOpts(           {x: centerX + Floor(28 * scaleH), y: centerY - Floor(86 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.press.Inventory.updateOpts(      {x: centerX - Floor(56 * scaleH), y: centerY + Floor(48 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.press.Use.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(48 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.press.Power.updateOpts(          {x: centerX - Floor(24 * scaleH), y: centerY + Floor(56 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.press.Map.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(66 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+
+    ; Overlay: General (anchored relative to screen center)
+    Overlays.General.regions.press.PauseMenu.updateOpts( {x: centerX - Floor(56 * scaleH), y: centerY + Floor(66 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+
+    ; Overlay: Movement (anchored relative to screen center)
+    Overlays.Movement.regions.hold.MoveUp.updateOpts(          {x: centerX - Floor(24 * scaleH), y: centerY - Floor(76 * scaleH), w: Floor(50 * scaleH), h: Floor(30 * scaleH)})
+    Overlays.Movement.regions.hold.MoveUpRight.updateOpts(     {x: centerX + Floor(28 * scaleH), y: centerY - Floor(68 * scaleH), w: Floor(30 * scaleH), h: Floor(30 * scaleH)})
+    Overlays.Movement.regions.hold.MoveRight.updateOpts(       {x: centerX + Floor(36 * scaleH), y: centerY - Floor(36 * scaleH), w: Floor(30 * scaleH), h: Floor(50 * scaleH)})
+    Overlays.Movement.regions.hold.MoveDownRight.updateOpts(   {x: centerX + Floor(28 * scaleH), y: centerY + Floor(16 * scaleH), w: Floor(30 * scaleH), h: Floor(30 * scaleH)})
+    Overlays.Movement.regions.hold.MoveDown.updateOpts(        {x: centerX - Floor(24 * scaleH), y: centerY + Floor(24 * scaleH), w: Floor(50 * scaleH), h: Floor(30 * scaleH)})
+    Overlays.Movement.regions.hold.MoveDownLeft.updateOpts(    {x: centerX - Floor(56 * scaleH), y: centerY + Floor(16 * scaleH), w: Floor(30 * scaleH), h: Floor(30 * scaleH)})
+    Overlays.Movement.regions.hold.MoveLeft.updateOpts(        {x: centerX - Floor(64 * scaleH), y: centerY - Floor(36 * scaleH), w: Floor(30 * scaleH), h: Floor(50 * scaleH)})
+    Overlays.Movement.regions.hold.MoveUpLeft.updateOpts(      {x: centerX - Floor(56 * scaleH), y: centerY - Floor(68 * scaleH), w: Floor(30 * scaleH), h: Floor(30 * scaleH)})
+
+    Overlays.Movement.regions.press.JumpAutoWalk.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY - Floor(112 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.AutoWalk.updateOpts(       {x: centerX - Floor(24 * scaleH), y: centerY - Floor(94 * scaleH),  w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.hold.CameraUp.updateOpts(        {x: centerX - Floor(32 * scaleH), y: centerY - Floor(36 * scaleH), w: Floor(10 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.hold.CameraLeft.updateOpts(      {x: centerX - Floor(20 * scaleH), y: centerY - Floor(44 * scaleH), w: Floor(20 * scaleH), h: Floor(24 * scaleH)})
+    Overlays.Movement.regions.hold.CameraRight.updateOpts(     {x: centerX + Floor(2 * scaleH),  y: centerY - Floor(44 * scaleH), w: Floor(20 * scaleH), h: Floor(24 * scaleH)})
+    Overlays.Movement.regions.hold.CameraDown.updateOpts(      {x: centerX + Floor(24 * scaleH), y: centerY - Floor(36 * scaleH), w: Floor(10 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportHome.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY + Floor(74 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToHarry.updateOpts({x: centerX - Floor(42 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToKatie.updateOpts({x: centerX - Floor(20 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToSteve.updateOpts({x: centerX + Floor(2 * scaleH),  y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToDavid.updateOpts({x: centerX + Floor(24 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
   }
 
   ; Hooks
