@@ -6,4 +6,5 @@
 #Include ./app/Games/PathOfExile2.ahk
 #Include ./app/Games/ArkSurvivalEvolved.ahk
 #Include ./app/Games/Palworld.ahk
+#Include ./app/Games/Mgba.ahk
 Return
