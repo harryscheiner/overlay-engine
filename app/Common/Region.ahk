@@ -2,6 +2,7 @@
   curState := -1
   newState := 0
   updateColor := false
+  hoverSince := 0 ; A_TickCount when the mouse entered a `hover` region, 0 when outside
   __New(overlay, id, opts) {
     this.overlay := overlay
     this.id := id
@@ -18,6 +19,7 @@
     this.text := this.hasText ? opts.text : ""
 
     this.time := opts.hasKey("time") ? opts.time : 0
+    this.hoverDelay := opts.hasKey("hoverDelay") ? opts.hoverDelay : 0 ; `hover` mode: ms the mouse must rest inside before triggering
     Switch (this.mode) {
       case "timer", "hovertimer":
         this.timerFunc := ObjBindMethod(this, "timerEvent")
@@ -69,6 +71,10 @@
         this.updateGuiControl()
       }
       changed := true
+    }
+    if (changed && this.curState && this.mode = "hover" && this.specialHook) {
+      ; A `hover` region with a specialHook calls it once when the hover activates
+      GAME.hook_Special(this)
     }
     if (this.curState && this.mode = "special") {
       GAME.hook_Special(this)
