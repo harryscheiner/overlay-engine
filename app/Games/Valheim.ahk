@@ -123,15 +123,15 @@
     Overlays.Map.regions.press.Ping.updateOpts(    {x: centerX - Floor(24 * scaleH), y: centerY + Floor(24 * scaleH), w: Floor(50 * scaleH), h: Floor(30 * scaleH)})
 
     ; Overlay: HUDCenter (anchored relative to screen center)
-    Overlays.HUDCenter.regions.hold.SecondaryAttack.updateOpts( {x: centerX - Floor(56 * scaleH), y: centerY - Floor(86 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.HUDCenter.regions.hold.Block.updateOpts(           {x: centerX + Floor(28 * scaleH), y: centerY - Floor(86 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.HUDCenter.regions.press.Inventory.updateOpts(      {x: centerX - Floor(56 * scaleH), y: centerY + Floor(48 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.HUDCenter.regions.press.Use.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(48 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.HUDCenter.regions.press.Power.updateOpts(          {x: centerX - Floor(24 * scaleH), y: centerY + Floor(56 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.HUDCenter.regions.press.Map.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(66 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.HUDCenter.regions.hold.SecondaryAttack.updateOpts( {x: centerX - Floor(70 * scaleH), y: centerY - Floor(112 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.HUDCenter.regions.hold.Block.updateOpts(           {x: centerX + Floor(28 * scaleH), y: centerY - Floor(112 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.HUDCenter.regions.press.Inventory.updateOpts(      {x: centerX - Floor(70 * scaleH), y: centerY + Floor(90 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.HUDCenter.regions.press.Use.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(90 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.HUDCenter.regions.press.Power.updateOpts(          {x: centerX - Floor(24 * scaleH), y: centerY + Floor(90 * scaleH), w: Floor(50 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.HUDCenter.regions.press.Map.updateOpts(            {x: centerX + Floor(28 * scaleH), y: centerY + Floor(114 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
 
     ; Overlay: General (anchored relative to screen center)
-    Overlays.General.regions.press.PauseMenu.updateOpts( {x: centerX - Floor(56 * scaleH), y: centerY + Floor(66 * scaleH), w: Floor(30 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.General.regions.press.PauseMenu.updateOpts( {x: centerX - Floor(70 * scaleH), y: centerY + Floor(114 * scaleH), w: Floor(44 * scaleH), h: Floor(22 * scaleH)})
 
     ; Overlay: Movement (anchored relative to screen center)
     Overlays.Movement.regions.hover.MoveUp.updateOpts(          {x: centerX - Floor(25 * scaleH), y: centerY - Floor(85 * scaleH), w: Floor(50 * scaleH), h: Floor(50 * scaleH)})
@@ -143,8 +143,8 @@
     Overlays.Movement.regions.hover.MoveLeft.updateOpts(        {x: centerX - Floor(85 * scaleH), y: centerY - Floor(25 * scaleH), w: Floor(50 * scaleH), h: Floor(50 * scaleH)})
     Overlays.Movement.regions.hover.MoveUpLeft.updateOpts(      {x: centerX - Floor(68 * scaleH), y: centerY - Floor(68 * scaleH), w: Floor(44 * scaleH), h: Floor(44 * scaleH)})
 
-    Overlays.Movement.regions.press.JumpAutoWalk.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY - Floor(112 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.Movement.regions.press.AutoWalk.updateOpts(       {x: centerX - Floor(24 * scaleH), y: centerY - Floor(94 * scaleH),  w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.JumpAutoWalk.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY - Floor(136 * scaleH), w: Floor(50 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.Movement.regions.press.AutoWalk.updateOpts(       {x: centerX - Floor(24 * scaleH), y: centerY - Floor(112 * scaleH), w: Floor(50 * scaleH), h: Floor(22 * scaleH)})
 
     ; Camera (fixed margins from screen edges)
     margin := 70
@@ -153,11 +153,11 @@
     Overlays.Movement.regions.hover.CameraLeft.updateOpts(  {x: margin,                     y: centerY - 125,              w: 40,  h: 250})
     Overlays.Movement.regions.hover.CameraRight.updateOpts( {x: this.windowW - margin - 40, y: centerY - 125,              w: 40,  h: 250})
 
-    Overlays.Movement.regions.press.TeleportHome.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY + Floor(74 * scaleH), w: Floor(50 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.Movement.regions.press.TeleportToHarry.updateOpts({x: centerX - Floor(42 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.Movement.regions.press.TeleportToKatie.updateOpts({x: centerX - Floor(20 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.Movement.regions.press.TeleportToSteve.updateOpts({x: centerX + Floor(2 * scaleH),  y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
-    Overlays.Movement.regions.press.TeleportToDavid.updateOpts({x: centerX + Floor(24 * scaleH), y: centerY + Floor(92 * scaleH), w: Floor(20 * scaleH), h: Floor(16 * scaleH)})
+    Overlays.Movement.regions.press.TeleportHome.updateOpts(   {x: centerX - Floor(24 * scaleH), y: centerY + Floor(144 * scaleH), w: Floor(50 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToHarry.updateOpts({x: centerX - Floor(42 * scaleH), y: centerY + Floor(172 * scaleH), w: Floor(20 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToKatie.updateOpts({x: centerX - Floor(20 * scaleH), y: centerY + Floor(172 * scaleH), w: Floor(20 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToSteve.updateOpts({x: centerX + Floor(2 * scaleH),  y: centerY + Floor(172 * scaleH), w: Floor(20 * scaleH), h: Floor(22 * scaleH)})
+    Overlays.Movement.regions.press.TeleportToDavid.updateOpts({x: centerX + Floor(24 * scaleH), y: centerY + Floor(172 * scaleH), w: Floor(20 * scaleH), h: Floor(22 * scaleH)})
   }
 
   ; Hooks
