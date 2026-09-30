@@ -18,8 +18,8 @@
 
   ; Standard: hover mode. Repeat: hover-timer mode (same regions, ids prefixed with "Rpt")
   getOverlayConfigs() {
-    return [{name: "Standard", prefix: "",    mode: "hover",      time: 0}
-          , {name: "Repeat",   prefix: "Rpt", mode: "hovertimer", time: 500}]
+    return [{name: "Standard", prefix: "",    mode: "hover",      time: 0,   hoverDelay: 500}
+          , {name: "Repeat",   prefix: "Rpt", mode: "hovertimer", time: 500, hoverDelay: 0}]
   }
 
   setOverlays() {
@@ -46,13 +46,15 @@
         mgOpts := {text: mgDef[2], color: mgDef[4], colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: mgDef[3], mode: mgCfg.mode}
         if (mgCfg.time)
           mgOpts.time := mgCfg.time
+        if (mgCfg.hoverDelay)
+          mgOpts.hoverDelay := mgCfg.hoverDelay
         Overlays[mgCfg.name].addRegion(mgCfg.prefix . mgDef[1], mgOpts)
       }
     }
 
     ; Toggle buttons (bottom right), switch visibility between the two overlays
-    Overlays.Standard.addRegion("ToggleToRepeat",   {text: "Mode: Standard", color: "0x000000", background: "0x3088F3", keys: [], mode: "special", specialHook: "showRepeatOverlay"})
-    Overlays.Repeat.addRegion("ToggleToStandard",   {text: "Mode: Repeat", color: "0x000000", background: "0x3088F3", keys: [], mode: "special", specialHook: "showStandardOverlay"})
+    Overlays.Standard.addRegion("ToggleToRepeat",   {text: "Mode: Standard", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [], mode: "hover", hoverDelay: 1000, specialHook: "showRepeatOverlay"})
+    Overlays.Repeat.addRegion("ToggleToStandard",   {text: "Mode: Repeat", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [], mode: "hover", hoverDelay: 1000, specialHook: "showStandardOverlay"})
 
     Overlays.Standard.newState := true
     Overlays.Repeat.newState := false
@@ -103,8 +105,8 @@
       mgRegions[mgP . "BtnA"].updateOpts(      {x: rowX + step * 5, y: btnY, w: btnW, h: short})
     }
 
-    Overlays.Standard.regions.special.ToggleToRepeat.updateOpts(   {x: toggleX, y: moveDownY, w: toggleW, h: short})
-    Overlays.Repeat.regions.special.ToggleToStandard.updateOpts(   {x: toggleX, y: moveDownY, w: toggleW, h: short})
+    Overlays.Standard.regions.hover.ToggleToRepeat.updateOpts(   {x: toggleX, y: moveDownY, w: toggleW, h: short})
+    Overlays.Repeat.regions.hover.ToggleToStandard.updateOpts(   {x: toggleX, y: moveDownY, w: toggleW, h: short})
   }
 
   ; Hooks
