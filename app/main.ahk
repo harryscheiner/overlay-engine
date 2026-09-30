@@ -156,8 +156,8 @@ Return
 
 RenderOverlay:
   if (!GAME) {
-    SetTitleMatchMode 3
     For i, entry in GAME_CLASSES {
+      SetTitleMatchMode, % entry.matchMode ? entry.matchMode : 3
       If WinExist(entry.title) {
         global GAME_TITLE
         GAME_TITLE := entry.title
