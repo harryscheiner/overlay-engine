@@ -152,10 +152,21 @@ OverlayLoop:
         For regionId, region in v.regions.hovertimer {
           isInside := (xpos >= region.x && xpos <= region.x + region.w
                     && ypos >= region.y && ypos <= region.y + region.h)
-          If (isInside && !region.newState)
-            region.timerKeys()
-          Else If (!isInside && region.newState)
-            region.timerKeys()
+          If (isInside && !region.newState) {
+            If (!region.hoverSince)
+              region.hoverSince := A_TickCount
+            If (A_TickCount - region.hoverSince >= region.hoverDelay)
+              region.timerKeys()
+          } Else If (!isInside) {
+            region.hoverSince := 0
+            If (region.newState)
+              region.timerKeys()
+          }
+        }
+      } Else If (v.regions.hasKey("hovertimer")) {
+        ; Overlay hidden: restart the hover delay when it becomes visible again
+        For regionId, region in v.regions.hovertimer {
+          region.hoverSince := 0
         }
       }
     }
