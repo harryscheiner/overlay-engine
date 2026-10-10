@@ -1,5 +1,6 @@
 ﻿Class Valheim extends Game {
   ; NOTE: Regions are positioned responsively, scaled from an 867x726 baseline resolution
+  menuClearTicks := 0 ; Menu-visibility debounce counter
   setKeys() {
     global
     ; Skills
@@ -51,20 +52,14 @@
     global
     ; Game UI Elements
     ; Pause Menu
-    GameUIElements.PauseMenuOrangeA := new GameUIElement({x: 375, y: 229, w: 1, h: 2, color: 0xf98b16, variance: 32})
-    GameUIElements.PauseMenuOrangeB := new GameUIElement({x: 400, y: 229, w: 1, h: 2, color: 0xf98b16, variance: 32, dependency: GameUIElements.PauseMenuOrangeA})
-    GameUIElements.PauseMenuOrangeC := new GameUIElement({x: 467, y: 229, w: 1, h: 2, color: 0xf98b16, variance: 32, dependency: GameUIElements.PauseMenuOrangeB})
-    GameUIElements.PauseMenuOrangeD := new GameUIElement({x: 490, y: 229, w: 1, h: 2, color: 0xf98b16, variance: 32, dependency: GameUIElements.PauseMenuOrangeC})
+    GameUIElements.PauseMenuOpen := new GameUIElement({x: 585, y: 185, w: 200, h: 40, image: A_ScriptDir . "\app\Games\images\valheim\pause-menu-line.png", variance: 35, trans: "FF00FF"})
 
-    ; Log Off or Quit
-    GameUIElements.LogOffButtonYes := new GameUIElement({x: 407, y: 305, w: 2, h: 2, color: 0xf59e00, variance: 8})
-    GameUIElements.LogOffButtonNo  := new GameUIElement({x: 457, y: 305, w: 2, h: 2, color: 0xb1741f, variance: 8, dependency: GameUIElements.LogOffButtonYes})
+    ; Log Off
+    GameUIElements.LogOffButtonYes := new GameUIElement({x: 601, y: 281, w: 72, h: 46, image: A_ScriptDir . "\app\Games\images\valheim\logoff-yes.png", variance: 30, trans: "FF00FF"})
+    GameUIElements.LogOffButtonNo  := new GameUIElement({x: 697, y: 281, w: 61, h: 46, image: A_ScriptDir . "\app\Games\images\valheim\logoff-no.png",  variance: 30, trans: "FF00FF", dependency: GameUIElements.LogOffButtonYes})
 
     ; Map
-    GameUIElements.MapIconFire  := new GameUIElement({x: 765, y: 510, w: 2, h: 2, color: 0xe3e3e3})
-    GameUIElements.MapIconHouse := new GameUIElement({x: 765, y: 540, w: 2, h: 2, color: 0xc9c9c9, dependency: GameUIElements.MapIconFire})
-    GameUIElements.MapIconT     := new GameUIElement({x: 765, y: 573, w: 2, h: 2, color: 0xdedede, dependency: GameUIElements.MapIconHouse})
-    GameUIElements.MapIconDot   := new GameUIElement({x: 765, y: 615, w: 2, h: 2, color: 0xc9c9c9, dependency: GameUIElements.MapIconT})
+    GameUIElements.MapIconCluster := new GameUIElement({x: 1183, y: 437, w: 73, h: 226, image: A_ScriptDir . "\app\Games\images\valheim\map-icons.png", variance: 30, trans: "FF00FF"})
   }
 
   setRegions() {
@@ -164,8 +159,13 @@
   hook_MidOverlayLoop() {
     global
     ; Check state of GameUIElements and set state of Overlays accordingly
-    Overlays.Map.newState := GameUIElements.MapIconDot.curState
-    Overlays.Movement.newState := !GameUIElements.PauseMenuOrangeD.curState && !GameUIElements.LogOffButtonNo.curState && !GameUIElements.MapIconDot.curState
+    Overlays.Map.newState := GameUIElements.MapIconCluster.curState
+
+    ; Debounce: require 2 consecutive clear ticks before showing Movement again
+    menuOpen := GameUIElements.PauseMenuOpen.curState || GameUIElements.LogOffButtonNo.curState || GameUIElements.MapIconCluster.curState
+    this.menuClearTicks := menuOpen ? 0 : this.menuClearTicks + 1
+
+    Overlays.Movement.newState := this.menuClearTicks >= 2
     Overlays.HUDCenter.newState := Overlays.Movement.newState ; Same as Movement
     Overlays.General.newState := true ; Always visible
   }
