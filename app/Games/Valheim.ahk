@@ -9,7 +9,7 @@
     ; Skills
     Keys.PrimaryAttack := new Key("Numpad1")
     Keys.SecondaryAttack := new Key("MButton")
-    Keys.Block := new Key("RButton")
+    Keys.Block := new Key("Numpad2")
     ; Movement
     Keys.MoveUp := new Key("w")
     Keys.MoveLeft := new Key("a")
