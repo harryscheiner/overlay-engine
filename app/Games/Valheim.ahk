@@ -117,11 +117,11 @@
     Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.Jump, Keys.AutoWalk], mode: "hovertimer", time: 500})
     ;Overlays.Movement.addRegion("AutoWalk",         {text: "↑↑", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.AutoWalk], mode: "hover", hoverDelay: 500})
     Overlays.Movement.addRegion("Crouch",           {text: "Crouch", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.Crouch], mode: "hover", hoverDelay: 500})
-    Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportHome], mode: "hovertimer", time: 1000})
-    Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToHarry], mode: "hovertimer", time: 1000})
-    Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToKatie], mode: "hovertimer", time: 1000})
-    Overlays.Movement.addRegion("TeleportToSteve",  {text: "S", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToSteve], mode: "hovertimer", time: 1000})
-    Overlays.Movement.addRegion("TeleportToDavid",  {text: "D", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToDavid], mode: "hovertimer", time: 1000})
+    Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportHome], mode: "hover", hoverDelay: 2000})
+    Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToHarry], mode: "hover", hoverDelay: 2000})
+    Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToKatie], mode: "hover", hoverDelay: 2000})
+    Overlays.Movement.addRegion("TeleportToSteve",  {text: "S", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToSteve], mode: "hover", hoverDelay: 2000})
+    Overlays.Movement.addRegion("TeleportToDavid",  {text: "D", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToDavid], mode: "hover", hoverDelay: 2000})
   }
 
   setRegionPositions() {
@@ -196,11 +196,11 @@
     ; Teleport row: flush with the bottom (2px margin), same width as CameraDown,
     ; H/K/S/D square, Home fills the rest, 2px gaps between buttons
     teleportY := this.windowH - 42
-    Overlays.Movement.regions.hovertimer.TeleportHome.updateOpts(   {x: centerX - 125, y: teleportY, w: 82, h: 40})
-    Overlays.Movement.regions.hovertimer.TeleportToHarry.updateOpts({x: centerX - 41,  y: teleportY, w: 40, h: 40})
-    Overlays.Movement.regions.hovertimer.TeleportToKatie.updateOpts({x: centerX + 1,   y: teleportY, w: 40, h: 40})
-    Overlays.Movement.regions.hovertimer.TeleportToSteve.updateOpts({x: centerX + 43,  y: teleportY, w: 40, h: 40})
-    Overlays.Movement.regions.hovertimer.TeleportToDavid.updateOpts({x: centerX + 85,  y: teleportY, w: 40, h: 40})
+    Overlays.Movement.regions.hover.TeleportHome.updateOpts(   {x: centerX - 125, y: teleportY, w: 82, h: 40})
+    Overlays.Movement.regions.hover.TeleportToHarry.updateOpts({x: centerX - 41,  y: teleportY, w: 40, h: 40})
+    Overlays.Movement.regions.hover.TeleportToKatie.updateOpts({x: centerX + 1,   y: teleportY, w: 40, h: 40})
+    Overlays.Movement.regions.hover.TeleportToSteve.updateOpts({x: centerX + 43,  y: teleportY, w: 40, h: 40})
+    Overlays.Movement.regions.hover.TeleportToDavid.updateOpts({x: centerX + 85,  y: teleportY, w: 40, h: 40})
   }
 
   ; Hooks
