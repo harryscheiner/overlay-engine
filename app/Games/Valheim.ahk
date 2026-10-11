@@ -31,6 +31,7 @@
     Keys.Inventory := new Key("Tab")
     Keys.Use := new Key("e")
     Keys.Power := new Key("f")
+    Keys.Crouch := new Key("Ctrl")
     Keys.Sit := new Key("x")
     Keys.Map := new Key("m")
     ; General
@@ -115,6 +116,7 @@
 
     Overlays.Movement.addRegion("JumpAutoWalk",     {text: "Jump ↑↑", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.Jump, Keys.AutoWalk], mode: "hovertimer", time: 500})
     ;Overlays.Movement.addRegion("AutoWalk",         {text: "↑↑", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.AutoWalk], mode: "hover", hoverDelay: 500})
+    Overlays.Movement.addRegion("Crouch",           {text: "Crouch", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.Crouch], mode: "hover", hoverDelay: 500})
     Overlays.Movement.addRegion("TeleportHome",     {text: "Home", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportHome], mode: "hovertimer", time: 1000})
     Overlays.Movement.addRegion("TeleportToHarry",  {text: "H", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToHarry], mode: "hovertimer", time: 1000})
     Overlays.Movement.addRegion("TeleportToKatie",  {text: "K", color: "0x164375", colorOff: "0x000000", background: "0x3088F3", backgroundOff: "0x3088F3", keys: [Keys.TeleportToKatie], mode: "hovertimer", time: 1000})
@@ -176,6 +178,9 @@
     Overlays.Movement.regions.hover.MoveDownLeft.updateOpts(    {x: centerX - Floor(68 * scaleH), y: centerY + Floor(24 * scaleH), w: Floor(44 * scaleH), h: Floor(44 * scaleH)})
     Overlays.Movement.regions.hover.MoveLeft.updateOpts(        {x: centerX - Floor(85 * scaleH), y: centerY - Floor(25 * scaleH), w: Floor(50 * scaleH), h: Floor(50 * scaleH)})
     Overlays.Movement.regions.hover.MoveUpLeft.updateOpts(      {x: centerX - Floor(68 * scaleH), y: centerY - Floor(68 * scaleH), w: Floor(44 * scaleH), h: Floor(44 * scaleH)})
+
+    ; Crouch sits directly above Power, same size
+    Overlays.Movement.regions.hover.Crouch.updateOpts(           {x: invX + invW + rowGap, y: row1Y - atkH - rowGap, w: useX - rowGap - (invX + invW + rowGap), h: atkH})
 
     ; JumpAutoWalk completes the grid's row2, centered under Power (same row as Esc/Map)
     Overlays.Movement.regions.hovertimer.JumpAutoWalk.updateOpts({x: centerX - Floor(24 * scaleH), y: row2Y, w: Floor(50 * scaleH), h: atkH})
